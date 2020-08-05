@@ -1,10 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    {% for recipe in recipes %}
-       <h1>{{ recipe.recipe_name }}</h1>
-        {{ recipe.recipe_method }}
-        {{ recipe.prep_time }}
-    {% endfor %}
+    <div class="container-fluid container-recipe">
+        <div class="row justify-content-center">
+            {% for recipe in recipes %}
+                <div class="col-md-4">
+
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ recipe.recipe_name }}</h5>
+                            <p class="card-text">{{ recipe.recipe_description }}</p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">{{ recipe.prep_time }}</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="btn btn-outline-info">more details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}
+
