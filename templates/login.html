@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+    <!--Login container-->
+<section id="registration-form">
+        <div class="container-fluid container-form">
+            <div class="row">
+                <div class="col">
+                    <h2 class="log-title">Login</h2>
+                    <hr>
+                    <form action="" method="POST">
+                        <div class="form-group form-label">
+                            <label for="username">Username <i class="fas fa-question-circle" data-position="top"></i></label>
+                            {{ form.username(placeholder="username", id="username", class="from=label") }}
+                            {% for error in form.username.errors %}
+                                <span class="error-message">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group form-label">
+
+                            <label for="password">Password <i class="fas fa-lock" data-position="top"></i></label>
+                            {{ form.password (placeholder="password", id="password", class="from=label") }}
+                            {% for error in form.password.errors %}
+                                <span class="error-message">{{ error }}</span>
+                            {% endfor %}
+
+                        </div>
+
+                        <!--Error messages-->
+                        <div class="row">
+                            {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        <p class="error-message">
+                                            {{ message }}
+                                        </p>
+                                    {% endfor %} {% endif %} {% endwith %}
+                        </div>
+
+
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-outline-info") }}
+                        </div>
+
+                        <!--Link to register page-->
+                        <div class="row center-already">
+                            <div class="col s12">
+                                <small>Not a user?
+                                    <a class="a-here" href="{{ url_for('register') }}">Register here!</a></small>
+                            </div>
+                        </div>
+ <hr>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock %}
+
