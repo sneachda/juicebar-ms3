@@ -7,19 +7,16 @@
     <section id="registration-form">
 
         <div class="container-fluid container-form">
-        <div class="row">
-            <div class="col">
 
-                </div>
-        </div>
 
             <div class="row justify-content-center">
                 <div class="col-md-4 form-column">
                     <h2 class="reg-title">Register</h2>
-                <img class="register-image image-fluid" src="{{ url_for('static', filename='img/register.jpg') }}"
+                    <img class="register-image image-fluid" src="{{ url_for('static', filename='img/register.jpg') }}"
                          alt="registration">
                     <hr>
                     <form action="" method="POST">
+                    {{ form.hidden_tag() }}
                         <div class="form-group form-label">
                             <label for="username">Username <i class="fas fa-question-circle"></i></label>
                             {{ form.username(placeholder="username", id="username", class="from=label") }}
@@ -37,13 +34,16 @@
 
                         <!--Error messages-->
                         <div class="row">
-                            {% with messages = get_flashed_messages() %}
+                            <div class="col-12">
+                                {% with messages = get_flashed_messages() %}
                                 {% if messages %}
                                     {% for message in messages %}
                                         <p class="error-message">
                                             {{ message }}
                                         </p>
                                     {% endfor %} {% endif %} {% endwith %}
+                            </div>
+
                         </div>
 
 

@@ -1,8 +1,9 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for, flash, session
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, pymongo
 from flask_bcrypt import Bcrypt
 from forms import RegistrationForm, LoginForm
+import math
 from bson.objectid import ObjectId
 
 from os import path
@@ -41,11 +42,48 @@ Recipes
 
 
 # all recipes display
-@app.route('/')
 @app.route('/get_recipes')
 def get_recipes():
-    return render_template('recipes.html', title='All Recipes',
-                           recipes=mongo.db.recipes.find())
+    # pagination - learnt through youtube video from Pretty Printed
+    # modified from the Shane Muirhead's project
+    limit_per_page = 3
+    current_page = int(request.args.get('current_page', 1))
+    number_of_all_rec = mongo.db.recipes.count()
+    pages = range(1, int(math.ceil(number_of_all_rec / limit_per_page)) + 1)
+    recipes = mongo.db.recipes.find().sort('_id', pymongo.ASCENDING).skip(
+        (current_page - 1) * limit_per_page).limit(limit_per_page)
+    # get total of all the recipes in db
+    return render_template("recipes.html", recipes=recipes,
+                           title='All Recipes', current_page=current_page,
+                           pages=pages, number_of_all_rec=number_of_all_rec)
+
+
+#all smoothies
+@app.route('/get_smoothies')
+def get_smoothies():
+    limit_per_page = 3
+    current_page = int(request.args.get('current_page', 1))
+    number_of_all_rec = mongo.db.recipes.count({"category_name": "Smoothie"})
+    pages = range(1, int(math.ceil(number_of_all_rec / limit_per_page)) + 1)
+    recipes = mongo.db.recipes.find({"category_name": "Smoothie"}).sort('_id', pymongo.ASCENDING).skip(
+        (current_page - 1) * limit_per_page).limit(limit_per_page)
+    return render_template("recipes.html", recipes=recipes,
+                           title='Smoothies', current_page=current_page,
+                           pages=pages, number_of_all_rec=number_of_all_rec)
+
+
+#all juices
+@app.route('/get_juices')
+def get_juices():
+    limit_per_page = 3
+    current_page = int(request.args.get('current_page', 1))
+    number_of_all_rec = mongo.db.recipes.count({"category_name": "Juice"})
+    pages = range(1, int(math.ceil(number_of_all_rec / limit_per_page)) + 1)
+    recipes = mongo.db.recipes.find({"category_name": "Juice"}).sort('_id', pymongo.ASCENDING).skip(
+        (current_page - 1) * limit_per_page).limit(limit_per_page)
+    return render_template("recipes.html", recipes=recipes,
+                           title='Smoothies', current_page=current_page,
+                           pages=pages, number_of_all_rec=number_of_all_rec)
 
 
 '''
@@ -58,18 +96,20 @@ User
 def register():
     form = RegistrationForm()
     if request.method == 'POST':
-        users = mongo.db.users
-        existing_user = users.find_one({'username': request.form['username']})
-
-        # If there is no existing user, the entered password is hashed for security before being sent to store in the DB
-        if existing_user is None:
-            # hashes the entered password
-            hashed_password = bcrypt.generate_password_hash(request.form['password'])
-            users.insert({'username': request.form['username'], 'password': hashed_password})
-            session["username"] = request.form['username']
-            flash('Your account has been successfully created.')
-            return redirect(url_for('index'))
-        flash('That username is taken! Please choose another username.')
+        if form.validate_on_submit():
+            # Variable for users collection
+            users = mongo.db.users
+            existing_user = users.find_one({'username': request.form['username']})
+            # If there is no existing user
+            if existing_user is None:
+                # creates the account, hashes the entered password, before sending it to DB storage
+                hashed_password = bcrypt.generate_password_hash(request.form['password'])
+                users.insert({'username': request.form['username'], 'password': hashed_password})
+                session["username"] = request.form['username']
+                flash('Your account has been successfully created.')
+                return redirect(url_for('index'))
+            # if user name is already taken
+            flash('Username is taken! Please choose another username.')
     return render_template('register.html', form=form, title='Register')
 
 
@@ -80,7 +120,7 @@ def login():
         # Variable for users collection
         users = mongo.db.users
         existing_user = users.find_one({'username': request.form['username']})
-
+        # checking if the existing user is registered
         if existing_user:
             if bcrypt.check_password_hash(existing_user['password'], request.form['password']):
                 # Add user to session if passwords match
@@ -88,10 +128,11 @@ def login():
                 flash('You have been successfully logged in!')
                 return redirect(url_for('index'))
             else:
-                # if user entered incorrect password
+                # if password incorrect
                 flash("Incorrect username or password. Please try again")
                 return redirect(url_for('login'))
         elif not existing_user:
+            # if no username  in database
             flash("Username does not exist! Please try again")
             return redirect(url_for('login'))
     return render_template('login.html', form=form, title='Login')
@@ -99,8 +140,17 @@ def login():
 
 @app.route('/logout')
 def logout():
-    session.pop("username", None)
-    return redirect(url_for('index'))
+    username = session['username']
+    if 'username' in session:
+        # This removes the current username from the session
+        session.pop('username', None)
+
+        flash(
+            "You've successfully logged out. " +
+            "See you next time, " +
+            username + "!")
+
+        return redirect(url_for('sign_in'))
 
 
 '''

@@ -2,27 +2,45 @@
 {% block content %}
 
     <div class="container-fluid container-recipe">
+    <nav aria-label="Page navigation example">
+            <ul class="pagination pagination-sm justify-content-center">
+                {% for page_num in pages %}
+                    {% if page_num == current_page %}
+
+
+                        <li class="page-item"><a class="page-link" href="">{{ page_num }}</a></li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link"
+                                                 href="{{ url_for('get_recipes', current_page=page_num) }}">{{ page_num }}</a>
+                        </li>
+                   {% endif %}
+                {% endfor %}
+            </ul>
+        </nav>
         <div class="row justify-content-center">
             {% for recipe in recipes %}
-                <div class="col-md-4">
-
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="col-md-3 card card-recipe">
+                    {% if recipe.recipe_image %}
+                        <img class="card-img-top" src="{{ recipe.recipe_image }}" alt="Card image cap">
+                    {% else %}
+                        <img class="card-img-top" src="{{ url_for('static', filename='img/recipe_x.jpg') }}"
+                             alt="Card image cap"/>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ recipe.recipe_name }}</h5>
+                        <p class="card-text">{{ recipe.recipe_description }}</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">{{ recipe.prep_time }}</li>
+                        </ul>
                         <div class="card-body">
-                            <h5 class="card-title">{{ recipe.recipe_name }}</h5>
-                            <p class="card-text">{{ recipe.recipe_description }}</p>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">{{ recipe.prep_time }}</li>
-                            </ul>
-                            <div class="card-body">
-                                <a href="#" class="btn btn-outline-info">more details</a>
-                            </div>
+                            <a href="#" class="btn btn-outline-info">more details</a>
                         </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
     </div>
+
 
 {% endblock %}
 

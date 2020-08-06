@@ -40,6 +40,12 @@ hr {
 
 .error-message {
     color: red;
+    text-align: center;
+}
+
+.success {
+    color: #F0E7E7;
+    text-align: center;
 }
 
 .title {
@@ -61,15 +67,16 @@ hr {
     margin-top: 10px;
 }
 
-.a-here {
+.a-here{
     color: #F0E7E7;
     background: #323036;
     padding: 2px;
     text-decoration: none;
     border-radius: 3px;
+    position: center;
 }
 
-.a-here:hover {
+.a-here:hover{
     background: #6D6875;
     color: #F0E7E7;
 
@@ -90,6 +97,8 @@ hr {
 /*----------------------------------------------------Navigation */
 .navbar-custom{
     padding: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
 }
 
 .logo {
@@ -147,6 +156,22 @@ hr {
 .form-label {
     border-radius: 10px;
     padding: 3px;
+}
+
+/*----------------------------------------------------Recipes */
+
+.pagination li a {
+    color: #F0E7E7;
+    background: #323036;
+}
+
+.pagination li a:hover {
+    background: black;
+    color: #F0E7E7;
+
+}
+.card-recipe {
+    margin: 30px;
 }
 
 
