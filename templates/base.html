@@ -35,7 +35,7 @@
             <img src="{{ url_for('static', filename='img/logo.jpg') }}"
                  class="logo" alt="JuiceBar">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
+        <button class="navbar-toggler nav-button-custom" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
                 aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -45,7 +45,7 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-search"></i> Browse </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-info"
+                    <div class="dropdown-menu dropdown-menu-right dropdown-info dropdown-menu-custom"
                          aria-labelledby="navbarDropdownMenuLink-4">
                         <a class="dropdown-item" href="{{ url_for('get_recipes') }}">All Recipe</a>
                         <a class="dropdown-item" href="{{ url_for('get_smoothies') }}">Smoothies</a>
@@ -57,7 +57,7 @@
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user"></i> My Account </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-info"
+                        <div class="dropdown-menu dropdown-menu-right dropdown-info dropdown-menu-custom"
                              aria-labelledby="navbarDropdownMenuLink-4">
                             <a class="dropdown-item" href="#">My Recipes</a>
                             <a class="dropdown-item" href="#">Add Recipe</a>
@@ -97,9 +97,11 @@
         </div>
     </div>
 
-
-    {% block content %}
+<div class="container-fluid">
+     {% block content %}
     {% endblock %}
+</div>
+
 
 
 </main>

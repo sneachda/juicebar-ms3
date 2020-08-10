@@ -18,27 +18,32 @@
             </ul>
         </nav>
         <div class="row justify-content-center">
-            {% for recipe in recipes %}
-                <div class="col-md-3 card card-recipe">
-                    {% if recipe.recipe_image %}
-                        <img class="card-img-top" src="{{ recipe.recipe_image }}" alt="Card image cap">
-                    {% else %}
-                        <img class="card-img-top" src="{{ url_for('static', filename='img/recipe_x.jpg') }}"
-                             alt="Card image cap"/>
-                    {% endif %}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ recipe.recipe_name }}</h5>
-                        <p class="card-text">{{ recipe.recipe_description }}</p>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">{{ recipe.prep_time }}</li>
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="btn btn-outline-info">more details</a>
-                        </div>
-                    </div>
+    {% for recipe in recipes %}
+        <div class="col-md-3 card text-center card-recipe">
+            {% if recipe.recipe_image %}
+                <img class="card-img-top image-fluid" src="{{ recipe.recipe_image }}" alt="Card image cap">
+            {% else %}
+                <img class="card-img-top image-fluid" src="{{ url_for('static', filename='img/recipe_x.jpg') }}"
+                     alt="Card image cap"/>
+            {% endif %}
+            <div class="card-body">
+                <h4 class="card-title recipe-title">{{ recipe.recipe_name }}</h4>
+                <p class="card-text recipe-p">{{ recipe.recipe_description }}</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item list-style"><i class="fas fa-clock list-padding"></i>{{ recipe.prep_time }}</li>
+                    <li class="list-group-item list-style"><i class="fas fa-utensils list-padding"></i> {{ recipe.it_serves }}</li>
+                </ul>
+                <div class="row">
+                    <div class="col card-body">
+                    <a href="#" class="btn btn-outline-info btn-custom">more details</a>
                 </div>
-            {% endfor %}
+                </div>
+
+            </div>
         </div>
+    {% endfor %}
+</div>
+
     </div>
 
 

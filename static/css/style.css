@@ -48,16 +48,31 @@ hr {
     text-align: center;
 }
 
-.title {
+.title, .reg-title, .log-title, .recipe-title {
     font-family: "Montserrat", sans-serif;
     text-align: center;
-    font-weight: 300;
-    font-size: 48px;
-    color: #f0e7e7;
     text-shadow: 1.5px 1.5px 1px #9a9a9a;
     display: block;
     letter-spacing: 2px;
     margin-top: 5px;
+    color: #f0e7e7;
+}
+
+.title {
+    font-weight: 300;
+    font-size: 48px;
+}
+
+.reg-title, .log-title {
+    font-weight: 200;
+    font-size: 40px;
+    position: absolute;
+}
+
+.reg-title {
+    top: 20%;
+    left: 30%;
+    right: 30%;
 }
 
 .main-p{
@@ -65,6 +80,16 @@ hr {
     color: #f0e7e7;
     text-align: center;
     margin-top: 10px;
+}
+
+.recipe-title {
+    font-weight: 200;
+}
+
+.recipe-p {
+    font-family: "Merriweather", sans-serif;
+    text-align: center;
+    font-weight: 100;
 }
 
 .a-here{
@@ -82,17 +107,7 @@ hr {
 
 }
 
-.reg-title, .log-title {
-    font-family: "Montserrat", sans-serif;
-    text-align: center;
-    font-weight: 200;
-    font-size: 40px;
-    color: #f0e7e7;
-    text-shadow: 1.5px 1.5px 1px #9a9a9a;
-    display: block;
-    letter-spacing: 2px;
-    margin-top: 5px;
-}
+
 
 /*----------------------------------------------------Navigation */
 .navbar-custom{
@@ -110,6 +125,23 @@ hr {
     opacity: 0.8;
     z-index: 2;
     border-radius: 30px;
+}
+
+.dropdown-menu-custom a {
+    background: #ffffff;
+}
+
+.dropdown-menu-custom a:hover {
+    background: #000000;
+    color: #F0E7E7;
+}
+
+.nav-button-custom {
+    margin: 0;
+}
+
+ .nav-item{
+    text-align: right;
 }
 
 /*----------------------------------------------------Carousel, Title */
@@ -132,9 +164,11 @@ hr {
 }
 
 /*----------------------------------------------------Forms */
+.spacer {
+    padding: 5px;
+}
 
 .container-form {
-    margin: 20px;
     padding-top: 10px;
     padding-right: 30px;
     padding-left: 30px;
@@ -158,6 +192,8 @@ hr {
     padding: 3px;
 }
 
+
+
 /*----------------------------------------------------Recipes */
 
 .pagination li a {
@@ -166,12 +202,30 @@ hr {
 }
 
 .pagination li a:hover {
-    background: black;
+    background: #000000;
     color: #F0E7E7;
+}
+
+.card-recipe {
+    padding-top: 10px;
+    margin: 30px;
+    color: #F0E7E7;
+    background: #000000;
+    border: 1px solid #F0E7E7;
+    border-radius: 10px;
+}
+
+.list-style{
+    color: #F0E7E7;
+    background: #000000;
+    border: 1px solid #F0E7E7;
+    border-radius: 10px;
+    padding: 10px;
 
 }
-.card-recipe {
-    margin: 30px;
+
+.list-padding {
+    padding: 3px;
 }
 
 
@@ -181,6 +235,10 @@ hr {
     display: inline-block;
     text-align: center;
     margin-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+
 }
 
 .social-links-footer li a i {
@@ -206,7 +264,7 @@ hr {
 .footer-year {
     color: ghostwhite;
     padding: 0;
-    font-family: Orbitron, sans-serif;
+    font-family: Merriweather, sans-serif;
 }
 
 /*----------------------------------------------------Media Queries */
