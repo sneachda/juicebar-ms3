@@ -104,7 +104,8 @@ def add_recipe():
         user_in_database = mongo.db.users.find_one({"username": session['username']})
         if user_in_database:
             # If user in DB, redirected to Create Recipe page
-            return render_template('add_recipe.html', title='New Recipe')
+            form = RecipeForm()
+            return render_template('add_recipe.html', title='New Recipe', form=form, categories=mongo.db.categories.find())
     else:
         # Render the page for user to be able to log in
         return render_template("login.html")
@@ -115,7 +116,6 @@ def add_recipe():
 def insert_recipe():
     ingredients = request.form.get("recipe_ingredients").splitlines()
     method = request.form.get("recipe_method").splitlines()
-    form = RecipeForm
     if request.method == 'POST':
         mongo.db.recipes.insert(
         {
@@ -129,7 +129,7 @@ def insert_recipe():
             'recipe_image': request.form.get('recipe_image'),
         })
     flash('Your recipe was added!')
-    return redirect(url_for('my_recipes', form=form))
+    return redirect(url_for('my_recipes'))
 
 
 '''
