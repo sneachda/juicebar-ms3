@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, redirect, request, url_for, flash, session
 from flask_pymongo import PyMongo, pymongo
 from flask_bcrypt import Bcrypt
-from forms import RegistrationForm, LoginForm
+from forms import RegistrationForm, LoginForm, RecipeForm
 import math
 from bson.objectid import ObjectId
 
@@ -58,7 +58,7 @@ def get_recipes():
                            pages=pages, number_of_all_rec=number_of_all_rec)
 
 
-#all smoothies
+# all smoothies
 @app.route('/get_smoothies')
 def get_smoothies():
     limit_per_page = 3
@@ -72,7 +72,7 @@ def get_smoothies():
                            pages=pages, number_of_all_rec=number_of_all_rec)
 
 
-#all juices
+# all juices
 @app.route('/get_juices')
 def get_juices():
     limit_per_page = 3
@@ -84,6 +84,52 @@ def get_juices():
     return render_template("recipes.html", recipes=recipes,
                            title='Smoothies', current_page=current_page,
                            pages=pages, number_of_all_rec=number_of_all_rec)
+
+
+'''
+My Account
+'''
+
+
+# My Recipes
+@app.route('/my_recipes')
+def my_recipes():
+    return render_template('recipes.html', title='My Account')
+
+
+# add recipe
+@app.route('/add_recipe')
+def add_recipe():
+    if 'username' in session:
+        user_in_database = mongo.db.users.find_one({"username": session['username']})
+        if user_in_database:
+            # If user in DB, redirected to Create Recipe page
+            return render_template('add_recipe.html', title='New Recipe')
+    else:
+        # Render the page for user to be able to log in
+        return render_template("login.html")
+
+
+# insert recipe
+@app.route('/insert_recipe', methods=['GET', 'POST'])
+def insert_recipe():
+    ingredients = request.form.get("recipe_ingredients").splitlines()
+    method = request.form.get("recipe_method").splitlines()
+    form = RecipeForm
+    if request.method == 'POST':
+        mongo.db.recipes.insert(
+        {
+            'category_name': request.form.get('category_name'),
+            'recipe_name': request.form.get('recipe_name'),
+            'recipe_ ingredients': ingredients,
+            'recipe_method': method,
+            'recipe_description': request.form.get('recipe_description'),
+            'prep_time': request.form.get('prep_time'),
+            'it_serves': request.form.get('it_serves'),
+            'recipe_image': request.form.get('recipe_image'),
+        })
+    flash('Your recipe was added!')
+    return redirect(url_for('my_recipes', form=form))
 
 
 '''
@@ -113,6 +159,7 @@ def register():
     return render_template('register.html', form=form, title='Register')
 
 
+# Login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -138,6 +185,7 @@ def login():
     return render_template('login.html', form=form, title='Login')
 
 
+# Logout
 @app.route('/logout')
 def logout():
     username = session['username']
@@ -150,7 +198,7 @@ def logout():
             "See you next time, " +
             username + "!")
 
-        return redirect(url_for('sign_in'))
+        return redirect(url_for('index'))
 
 
 '''
@@ -172,3 +220,4 @@ if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
             port=int(os.getenv("PORT", "5000")),
             debug=True)
+
