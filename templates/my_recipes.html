@@ -1,19 +1,33 @@
-
-
 {% extends 'base.html' %}
 {% block content %}
 
 
-    <div class="container-fluid center-align">
-        <div class="row">
-            {% for recipe in my_recipes %}
-                {% include "recipes.html" %}
+    <div class="row justify-content-center">
+        {% for recipe in recipes %}
+        <div class="col-md-3 card text-center card-recipe">
+            {% if recipe.recipe_image %}
+                <img class="card-img-top image-fluid" src="{{ recipe.recipe_image }}" alt="Card image cap">
             {% else %}
-                <h5 class="margin-top-small">
-                    nothing yet
-                </h5>
-            {% endfor %}
-        </div>
-    </div>
+                <img class="card-img-top image-fluid" src="{{ url_for('static', filename='img/recipe_x.jpg') }}"
+                     alt="Card image cap"/>
+            {% endif %}
+            <div class="card-body">
+                <h4 class="card-title recipe-title">{{ recipe.recipe_name }}</h4>
+                <p class="card-text recipe-p">{{ recipe.recipe_description }}</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item list-style"><i
+                            class="fas fa-clock list-padding"></i>{{ recipe.prep_time }}</li>
+                    <li class="list-group-item list-style"><i
+                            class="fas fa-utensils list-padding"></i> {{ recipe.it_serves }}</li>
+                </ul>
+                <div class="row">
+                    <div class="col card-body">
+                        <a href="#" class="btn btn-outline-info btn-custom">more details</a>
+                    </div>
+                </div>
 
+            </div>
+        </div>
+     {% endfor %}
+    </div>
 {% endblock %}

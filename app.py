@@ -95,7 +95,8 @@ My Account
 @app.route('/my_recipes/')
 def my_recipes():
     if 'username' in session:
-        return render_template('my_recipes.html', title='My Account')
+        return render_template('my_recipes.html', title='My Account',
+                               recipes=mongo.db.recipes.find({"author": session["username"]}))
 
 
 # add recipe
