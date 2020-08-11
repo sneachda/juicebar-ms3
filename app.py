@@ -116,20 +116,18 @@ def add_recipe():
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
     if request.method == 'POST':
-        form = RecipeForm()
-        if form.validate_on_submit():
-            recipes = mongo.db.recipes
-            recipes.insert_one({
-                'category_name': request.form.get('category_name'),
-                'recipe_name': request.form.get('recipe_name'),
-                'recipe_ ingredients': request.form.get("recipe_ingredients"),
-                'recipe_method': request.form.get("recipe_method"),
-                'recipe_description': request.form.get('recipe_description'),
-                'prep_time': request.form.get('prep_time'),
-                'it_serves': request.form.get('it_serves'),
-                'recipe_image': request.form.get('recipe_image'),
-                'author': session['username']
-            })
+        recipes = mongo.db.recipes
+        recipes.insert_one({
+            'category_name': request.form.get('category_name'),
+            'recipe_name': request.form.get('recipe_name'),
+            'recipe_ ingredients': request.form.get("recipe_ingredients"),
+            'recipe_method': request.form.get("recipe_method"),
+            'recipe_description': request.form.get('recipe_description'),
+            'prep_time': request.form.get('prep_time'),
+            'it_serves': request.form.get('it_serves'),
+            'recipe_image': request.form.get('recipe_image'),
+            'author': session['username']
+        })
     flash('Your recipe was added!')
     return redirect(url_for('my_recipes'))
 
