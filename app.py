@@ -92,17 +92,18 @@ My Account
 
 
 # My Recipes
-@app.route('/my_recipes')
+@app.route('/my_recipes/')
 def my_recipes():
-    return render_template('recipes.html', title='My Account')
+    if 'username' in session:
+        return render_template('my_recipes.html', title='My Account')
 
 
 # add recipe
 @app.route('/add_recipe')
 def add_recipe():
     if 'username' in session:
-        user_in_database = mongo.db.users.find_one({"username": session['username']})
-        if user_in_database:
+        user_logged_in = mongo.db.users.find_one({"username": session['username']})
+        if user_logged_in:
             # If user in DB, redirected to Create Recipe page
             form = RecipeForm()
             return render_template('add_recipe.html', title='New Recipe', form=form, categories=mongo.db.categories.find())
@@ -112,22 +113,23 @@ def add_recipe():
 
 
 # insert recipe
-@app.route('/insert_recipe', methods=['GET', 'POST'])
+@app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
-    ingredients = request.form.get("recipe_ingredients").splitlines()
-    method = request.form.get("recipe_method").splitlines()
     if request.method == 'POST':
-        mongo.db.recipes.insert(
-        {
-            'category_name': request.form.get('category_name'),
-            'recipe_name': request.form.get('recipe_name'),
-            'recipe_ ingredients': ingredients,
-            'recipe_method': method,
-            'recipe_description': request.form.get('recipe_description'),
-            'prep_time': request.form.get('prep_time'),
-            'it_serves': request.form.get('it_serves'),
-            'recipe_image': request.form.get('recipe_image'),
-        })
+        form = RecipeForm()
+        if form.validate_on_submit():
+            recipes = mongo.db.recipes
+            recipes.insert_one({
+                'category_name': request.form.get('category_name'),
+                'recipe_name': request.form.get('recipe_name'),
+                'recipe_ ingredients': request.form.get("recipe_ingredients"),
+                'recipe_method': request.form.get("recipe_method"),
+                'recipe_description': request.form.get('recipe_description'),
+                'prep_time': request.form.get('prep_time'),
+                'it_serves': request.form.get('it_serves'),
+                'recipe_image': request.form.get('recipe_image'),
+                'author': session['username']
+            })
     flash('Your recipe was added!')
     return redirect(url_for('my_recipes'))
 

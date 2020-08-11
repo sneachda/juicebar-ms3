@@ -30,7 +30,7 @@ class RecipeForm(FlaskForm):
                              validators=[DataRequired()])
     it_serves = IntegerField('Number of Servings',
                              validators=[DataRequired()])
-    recipe_image = StringField('Recipe Image',
+    recipe_image = StringField('Recipe Image URL',
                                validators=[Optional()])
     recipe_ingredients = TextAreaField('Ingredients',
                                        validators=[DataRequired()])

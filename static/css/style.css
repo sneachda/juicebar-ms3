@@ -192,6 +192,11 @@ hr {
     padding: 3px;
 }
 
+.required:after {
+  content:" *";
+  color: red;
+}
+
 
 
 /*----------------------------------------------------Recipes */
