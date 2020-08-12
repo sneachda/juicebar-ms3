@@ -30,9 +30,6 @@ hr {
     max-width: 100%;
     height: auto;
     position: center;
-
-
-
 }
 
 
@@ -44,7 +41,7 @@ hr {
 }
 
 .success {
-    color: #F0E7E7;
+    color: darkgreen;
     text-align: center;
 }
 

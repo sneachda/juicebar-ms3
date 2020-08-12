@@ -17,13 +17,26 @@
                 {% endwith %}
             </div>
         </div>
+
         <div class="row">
 
             <div class="col">
-                <h3> {{ full_recipe.recipe_name }} </h3>
+                <h3 class="recipe-title"> {{ full_recipe.recipe_name }} </h3>
             </div>
 
         </div>
+        {% if session.username == full_recipe.author %}
+            <div class="row">
+                <div class="col-md-6">
+                    edit
+                </div>
+                <div class="col s6 center-align">
+
+                        Delete
+
+                </div>
+            </div>
+            {% endif %}
 
 
     </div>
