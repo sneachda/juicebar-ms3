@@ -86,6 +86,14 @@ def get_juices():
                            pages=pages, number_of_all_rec=number_of_all_rec)
 
 
+@app.route('/recipe_full_page/<recipe_id>')
+def recipe_full_page(recipe_id):
+    full_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template("recipe_full_page.html",
+                           full_recipe=full_recipe,
+                           title='Recipe Details')
+
+
 '''
 My Account
 '''
