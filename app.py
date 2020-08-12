@@ -63,13 +63,13 @@ def get_recipes():
 def get_smoothies():
     limit_per_page = 3
     current_page = int(request.args.get('current_page', 1))
-    number_of_all_rec = mongo.db.recipes.count({"category_name": "Smoothie"})
-    pages = range(1, int(math.ceil(number_of_all_rec / limit_per_page)) + 1)
+    number_of_smo_rec = mongo.db.recipes.count({"category_name": "Smoothie"})
+    pages = range(1, int(math.ceil(number_of_smo_rec / limit_per_page)) + 1)
     recipes = mongo.db.recipes.find({"category_name": "Smoothie"}).sort('_id', pymongo.ASCENDING).skip(
         (current_page - 1) * limit_per_page).limit(limit_per_page)
-    return render_template("recipes.html", recipes=recipes,
+    return render_template("smoothies.html", recipes=recipes,
                            title='Smoothies', current_page=current_page,
-                           pages=pages, number_of_all_rec=number_of_all_rec)
+                           pages=pages, number_of_smo_rec=number_of_smo_rec)
 
 
 # all juices
@@ -77,13 +77,13 @@ def get_smoothies():
 def get_juices():
     limit_per_page = 3
     current_page = int(request.args.get('current_page', 1))
-    number_of_all_rec = mongo.db.recipes.count({"category_name": "Juice"})
-    pages = range(1, int(math.ceil(number_of_all_rec / limit_per_page)) + 1)
+    number_of_jui_rec = mongo.db.recipes.count({"category_name": "Juice"})
+    pages = range(1, int(math.ceil(number_of_jui_rec / limit_per_page)) + 1)
     recipes = mongo.db.recipes.find({"category_name": "Juice"}).sort('_id', pymongo.ASCENDING).skip(
         (current_page - 1) * limit_per_page).limit(limit_per_page)
-    return render_template("recipes.html", recipes=recipes,
+    return render_template("juices.html", recipes=recipes,
                            title='Juices', current_page=current_page,
-                           pages=pages, number_of_all_rec=number_of_all_rec)
+                           pages=pages, number_of_jui_rec=number_of_jui_rec)
 
 
 @app.route('/recipe_full_page/<recipe_id>')
@@ -105,12 +105,12 @@ def my_recipes():
     if 'username' in session:
         limit_per_page = 3
         current_page = int(request.args.get('current_page', 1))
-        number_of_all_rec = mongo.db.recipes.count({"author": session["username"]})
-        pages = range(1, int(math.ceil(number_of_all_rec / limit_per_page)) + 1)
+        number_of_my_rec = mongo.db.recipes.count({"author": session["username"]})
+        pages = range(1, int(math.ceil(number_of_my_rec / limit_per_page)) + 1)
         recipes = mongo.db.recipes.find({"author": session["username"]}).sort('_id', pymongo.ASCENDING).skip(
             (current_page - 1) * limit_per_page).limit(limit_per_page)
         return render_template('my_recipes.html', title='My Account', pages=pages,
-                               recipes=recipes, current_page=current_page)
+                               recipes=recipes, current_page=current_page, number_of_my_rec=number_of_my_rec)
 
 
 # add recipe
@@ -145,6 +145,12 @@ def insert_recipe():
         })
     flash('Your recipe was added!')
     return redirect(url_for('my_recipes'))
+
+
+@app.route('/delete_recipe/<recipe_id>')
+def delete_recipe(recipe_id):
+    full_recipe = mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+    return render_template("my_recipes.html", full_recipe=full_recipe)
 
 
 '''

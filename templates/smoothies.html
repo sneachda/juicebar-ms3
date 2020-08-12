@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container-fluid container-recipe">
+
+        <div class="row">
+            <div class="col-12 col-center">
+                <h4 class="account-title uppercase">{{ title }}</h4>
+            </div>
+        </div>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination pagination-sm justify-content-center">
+                {% for page_num in pages %}
+                    {% if page_num == current_page %}
+                        <li class="page-item"><a class="page-link" href="">{{ page_num }}</a></li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link"
+                                                 href="{{ url_for('get_smoothies', current_page=page_num) }}">{{ page_num }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </nav>
+        <div class="row justify-content-center">
+            {% for recipe in recipes %}
+                <div class="col-md-3 card text-center card-recipe">
+                    {% if recipe.recipe_image %}
+                        <img class="card-img-top image-fluid" src="{{ recipe.recipe_image }}" alt="Card image cap">
+                    {% else %}
+                        <img class="card-img-top image-fluid" src="{{ url_for('static', filename='img/recipe_x.jpg') }}"
+                             alt="Card image cap"/>
+                    {% endif %}
+                    <div class="card-body">
+                        <h4 class="card-title recipe-title">{{ recipe.recipe_name }}</h4>
+                        <p class="card-text recipe-p">{{ recipe.recipe_description }}</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item list-style"><i
+                                    class="fas fa-clock list-padding"></i>{{ recipe.prep_time }}</li>
+                            <li class="list-group-item list-style"><i
+                                    class="fas fa-utensils list-padding"></i> {{ recipe.it_serves }}</li>
+                        </ul>
+                        <div class="row">
+                            <div class="col card-body">
+                                <a href="{{ url_for('recipe_full_page', recipe_id=recipe._id) }}"
+                                   class="btn btn-outline-info btn-custom">full recipe</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
