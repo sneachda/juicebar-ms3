@@ -35,6 +35,10 @@ hr {
 
 /*----------------------------------------------------General Text */
 
+.uppercase {
+    text-transform: uppercase;
+}
+
 .error-message {
     color: red;
     text-align: center;
@@ -83,10 +87,11 @@ hr {
     font-weight: 200;
 }
 
-.recipe-p {
+.recipe-p, .account-title {
     font-family: "Merriweather", sans-serif;
     text-align: center;
     font-weight: 100;
+    color: #f0e7e7;
 }
 
 .a-here{
@@ -103,7 +108,6 @@ hr {
     color: #F0E7E7;
 
 }
-
 
 
 /*----------------------------------------------------Navigation */
@@ -198,6 +202,12 @@ hr {
 
 /*----------------------------------------------------Recipes */
 
+.container-full_page {
+    padding: 30px;
+    border: 1px solid #F0E7E7;
+    border-radius: 10px;
+}
+
 .pagination li a {
     color: #F0E7E7;
     background: #323036;
@@ -230,6 +240,11 @@ hr {
     padding: 3px;
 }
 
+.col-center {
+    text-align: center;
+    display: inline-block;
+    padding: 3px;
+}
 
 /*----------------------------------------------------Footer */
 

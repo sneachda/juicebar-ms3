@@ -82,7 +82,7 @@ def get_juices():
     recipes = mongo.db.recipes.find({"category_name": "Juice"}).sort('_id', pymongo.ASCENDING).skip(
         (current_page - 1) * limit_per_page).limit(limit_per_page)
     return render_template("recipes.html", recipes=recipes,
-                           title='Smoothies', current_page=current_page,
+                           title='Juices', current_page=current_page,
                            pages=pages, number_of_all_rec=number_of_all_rec)
 
 
@@ -103,8 +103,14 @@ My Account
 @app.route('/my_recipes/')
 def my_recipes():
     if 'username' in session:
-        return render_template('my_recipes.html', title='My Account',
-                               recipes=mongo.db.recipes.find({"author": session["username"]}))
+        limit_per_page = 3
+        current_page = int(request.args.get('current_page', 1))
+        number_of_all_rec = mongo.db.recipes.count({"author": session["username"]})
+        pages = range(1, int(math.ceil(number_of_all_rec / limit_per_page)) + 1)
+        recipes = mongo.db.recipes.find({"author": session["username"]}).sort('_id', pymongo.ASCENDING).skip(
+            (current_page - 1) * limit_per_page).limit(limit_per_page)
+        return render_template('my_recipes.html', title='My Account', pages=pages,
+                               recipes=recipes, current_page=current_page)
 
 
 # add recipe
