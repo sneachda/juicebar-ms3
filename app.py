@@ -142,15 +142,44 @@ def insert_recipe():
             'it_serves': request.form.get('it_serves'),
             'recipe_image': request.form.get('recipe_image'),
             'author': session['username']
-        })
+            })
     flash('Your recipe was added!')
     return redirect(url_for('my_recipes'))
 
 
+@app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+    if 'username' in session:
+        full_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+        form = RecipeForm()
+        return render_template('edit_recipe.html', title='Edit Recipe', full_recipe=full_recipe, form=form, categories=mongo.db.categories.find())
+    else:
+        # Render the page for user to be able to log in
+        return render_template("login.html")
+
+
+@app.route('/update_recipe/<recipe_id>', methods=['POST'])
+def update_recipe(recipe_id):
+    if request.method == 'POST':
+        recipes = mongo.db.recipes
+        recipes.update({"_id": ObjectId(recipe_id)}, {
+            'category_name': request.form.get('category_name'),
+            'recipe_name': request.form.get('recipe_name'),
+            'recipe_ ingredients': request.form.get("recipe_ingredients"),
+            'recipe_method': request.form.get("recipe_method"),
+            'recipe_description': request.form.get('recipe_description'),
+            'prep_time': request.form.get('prep_time'),
+            'it_serves': request.form.get('it_serves'),
+            'recipe_image': request.form.get('recipe_image'),
+            'author': session['username']
+        })
+        return redirect(url_for("my_recipes", recipe_id=recipe_id))
+
+
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
-    full_recipe = mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
-    return render_template("my_recipes.html", full_recipe=full_recipe)
+    mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+    return redirect(url_for("my_recipes"))
 
 
 '''
