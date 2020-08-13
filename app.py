@@ -135,7 +135,7 @@ def insert_recipe():
         recipes.insert_one({
             'category_name': request.form.get('category_name'),
             'recipe_name': request.form.get('recipe_name'),
-            'recipe_ ingredients': request.form.get("recipe_ingredients"),
+            'recipe_ingredients': request.form.get("recipe_ingredients"),
             'recipe_method': request.form.get("recipe_method"),
             'recipe_description': request.form.get('recipe_description'),
             'prep_time': request.form.get('prep_time'),
@@ -165,7 +165,7 @@ def update_recipe(recipe_id):
         recipes.update({"_id": ObjectId(recipe_id)}, {
             'category_name': request.form.get('category_name'),
             'recipe_name': request.form.get('recipe_name'),
-            'recipe_ ingredients': request.form.get("recipe_ingredients"),
+            'recipe_ingredients': request.form.get("recipe_ingredients"),
             'recipe_method': request.form.get("recipe_method"),
             'recipe_description': request.form.get('recipe_description'),
             'prep_time': request.form.get('prep_time'),

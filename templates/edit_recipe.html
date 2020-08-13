@@ -40,15 +40,18 @@
             <div class="form-row mt-4">
                     <div class="col-4">
                         <label class="recipe-p" for="prep_time"> Recipe Image <i class="fas fa-question-circle"></i></label>
-                        {{ form.recipe_image(placeholder="Recipe Image URL", id="recipe_image", class="validate form-control") }}
+                        <input id="recipe_image" name="recipe_image" class="validate form-control" value="{{ full_recipe.recipe_image }}" type="text"/>
+
                     </div>
             <div class="col-4">
                         <label class="required recipe-p" for="prep_time"> Cooking Time <i class="fas fa-question-circle"></i></label>
-                        {{ form.prep_time(placeholder="Cooking time - in minutes", id="prep_time", class="validate form-control", type="number") }}
+                        <input id="prep_time" name="prep_time" class="validate form-control" value="{{ full_recipe.prep_time }}" type="number"/>
+
                     </div>
                     <div class="col-4">
                         <label class="required recipe-p" for="it_serves"> Number of Servings <i class="fas fa-question-circle"></i></label>
-                       {{ form.it_serves(placeholder="Number of Servings", id="it_serves", class="validate form-control", type="number") }}
+                        <input id="it_serves" name="it_serves" class="validate form-control" value="{{ full_recipe.it_serves }}" type="number"/>
+
                     </div>
                 </div>
                 <div class="col">
@@ -60,7 +63,8 @@
             <div class="col">
                 <div class="form-group form-label">
                     <label class="required recipe-p" for="recipe_method"> Directions <i class="fas fa-question-circle"></i></label>
-                    {{ form.recipe_ingredients(placeholder="Recipe Directions", id="recipe_method", class="validate form-control", type="text") }}
+                    <textarea id="recipe_method" name="recipe_method" class="validate form-control" type="text" >{{ full_recipe.recipe_method }}</textarea>
+
                 </div>
                 </div>
 
