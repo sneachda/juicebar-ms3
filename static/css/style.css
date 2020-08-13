@@ -32,6 +32,42 @@ hr {
     position: center;
 }
 
+.full-recipe-img {
+    margin: 20px;
+    box-shadow: 5px 5px 5px #f0e7e7;
+    -webkit-box-shadow: 5px 5px 5px #f0e7e7;
+    -moz-box-shadow: 5px 5px 5px #f0e7e7;
+}
+
+.img-hover figure img {
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	-webkit-transition: .2s ease-in-out;
+	transition: .2s ease-in-out;
+     box-shadow: 5px 5px 5px #f0e7e7;
+    -webkit-box-shadow: 5px 5px 5px #f0e7e7;
+    -moz-box-shadow: 5px 5px 5px #f0e7e7;
+}
+
+.img-hover figure:hover img {
+	-webkit-filter: grayscale(0);
+	filter: grayscale(0);
+     box-shadow: 5px 5px 10px #ECC8AF;
+    -webkit-box-shadow: 5px 5px 10px #ECC8AF;
+    -moz-box-shadow: 5px 5px 10px #ECC8AF;
+
+}
+
+.img-hover-2 figure img {
+transition: 1s ease;
+}
+
+.img-hover-2 figure:hover img {
+-webkit-transform: scale(0.8);
+-ms-transform: scale(0.8);
+transform: scale(0.8);
+transition: 1s ease;
+}
 
 /*----------------------------------------------------General Text */
 
@@ -62,6 +98,8 @@ hr {
 .title {
     font-weight: 300;
     font-size: 48px;
+    border: 1px solid #F0E7E7;
+    border-radius: 10px;
 }
 
 .reg-title, .log-title {
@@ -85,6 +123,10 @@ hr {
 
 .recipe-title {
     font-weight: 200;
+    text-shadow: 2px 2px 2px #FBBFCA;
+    border: 1px solid #F0E7E7;
+    border-radius: 10px;
+
 }
 
 .recipe-p, .account-title {
@@ -126,6 +168,20 @@ hr {
     opacity: 0.8;
     z-index: 2;
     border-radius: 30px;
+     box-shadow: 1.5px 1.5px 3px #f0e7e7;
+    -webkit-box-shadow: 1.5px 1.5px 3px #f0e7e7;
+    -moz-box-shadow: 1.5px 1.5px 3px #f0e7e7;
+}
+
+.grow img{
+transition: 1s ease;
+}
+
+.grow img:hover{
+-webkit-transform: scale(1.1);
+-ms-transform: scale(1.1);
+transform: scale(1.1);
+transition: 1s ease;
 }
 
 .dropdown-menu-custom a {

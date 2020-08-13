@@ -13,12 +13,12 @@
                 </div>
                 <div class="form-row mt-4">
                     <div class="col-8">
-                        <label class="required" for="recipe_name"> Recipe Name <i class="fas fa-question-circle"></i>
+                        <label class="required uppercase" for="recipe_name"> Recipe Name <i class="fas fa-question-circle"></i>
                             <i class="fas fa-asterisk"></i></label>
                         {{ form.recipe_name(placeholder="Recipe Name", id="recipe_name", class="validate form-control", type="text") }}
                     </div>
                     <div class="col-4">
-                        <label class="required" for="recipe_category"> Category <i class="fas fa-question-circle"></i>
+                        <label class="required uppercase" for="recipe_category"> Category <i class="fas fa-question-circle"></i>
                             <i class="fas fa-asterisk"></i></label>
 
                         <select id="category_name" name="category_name" class="validate form-control" required>
@@ -31,24 +31,24 @@
                 </div>
                     <div class="form-row mt-4">
                         <div class="col">
-                            <label class="required" for="recipe_description"> Recipe Description <i class="fas fa-question-circle"></i>
+                            <label class="required uppercase" for="recipe_description"> Recipe Description <i class="fas fa-question-circle"></i>
                                 <i class="fas fa-asterisk"></i></label>
                             {{ form.recipe_description(placeholder="Recipe Description - few words about your recipe", id="recipe_description", class="validate form-control", type="text") }}
                         </div>
                     </div>
             <div class="form-row mt-4">
                     <div class="col-4">
-                        <label for="prep_time"> Recipe Image <i class="fas fa-question-circle"></i>
+                        <label  class="uppercase" for="prep_time"> Recipe Image <i class="fas fa-question-circle"></i>
                             </label>
                         {{ form.recipe_image(placeholder="Recipe Image URL", id="recipe_image", class="validate form-control") }}
                     </div>
             <div class="col-4">
-                        <label class="required" for="prep_time"> Cooking Time <i class="fas fa-question-circle"></i>
+                        <label class="required uppercase" for="prep_time"> Cooking Time <i class="fas fa-question-circle"></i>
                             <i class="fas fa-asterisk"></i></label>
                         {{ form.prep_time(placeholder="Cooking time - in minutes", id="prep_time", class="validate form-control", type="number") }}
                     </div>
                     <div class="col-4">
-                        <label class="required" for="it_serves"> Number of Servings <i class="fas fa-question-circle"></i>
+                        <label class="required uppercase" for="it_serves"> Number of Servings <i class="fas fa-question-circle"></i>
                             <i class="fas fa-asterisk"></i></label>
 
                        {{ form.it_serves(placeholder="Number of Servings", id="it_serves", class="validate form-control", type="number") }}
@@ -56,14 +56,14 @@
                 </div>
                 <div class="col">
                 <div class="form-group form-label">
-                    <label class="required" for="recipe_ingredients"> Recipe Ingredients <i class="fas fa-question-circle"></i>
+                    <label class="required uppercase" for="recipe_ingredients"> Recipe Ingredients <i class="fas fa-question-circle"></i>
                         <i class="fas fa-asterisk"></i></label>
                     {{ form.recipe_ingredients(placeholder="Recipe Ingredients", id="recipe_ingredients", class="validate form-control", type="text") }}
                 </div>
                 </div>
             <div class="col">
                 <div class="form-group form-label">
-                    <label class="required" for="recipe_method"> Directions <i class="fas fa-question-circle"></i>
+                    <label class="required uppercase" for="recipe_method"> Directions <i class="fas fa-question-circle"></i>
                         <i class="fas fa-asterisk"></i></label>
                     {{ form.recipe_method(placeholder="Recipe Directions", id="recipe_method", class="validate form-control", type="text") }}
                 </div>

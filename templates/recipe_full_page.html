@@ -20,12 +20,12 @@
             <div class="col-12">
                 <h4 class="recipe-title p-3">{{ full_recipe.recipe_name }}</h4>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 img-hover-2">
                 {% if full_recipe.recipe_image %}
-                    <img class="image-fluid" src="{{ full_recipe.recipe_image }}" alt="recipe image">
+                    <figure><img class="image-fluid full-recipe-img" src="{{ full_recipe.recipe_image }}" alt="recipe image"/></figure>
                 {% else %}
-                    <img class="image-fluid" src="{{ url_for('static', filename='img/recipe_x.jpg') }}"
-                         alt="recipe image"/>
+                    <figure><img class="image-fluid full-recipe-img" src="{{ url_for('static', filename='img/recipe_x.jpg') }}"
+                         alt="recipe image"/></figure>
                 {% endif %}
             </div>
             <div class="col-md-6">
@@ -73,6 +73,12 @@
                     </div>
                 </div>
             {% endif %}
+
+    <div class="row mt-4 justify-content-center">
+                    <div class="form-group">
+                        <a href="javascript: history.go(-1)" class="btn btn-outline-danger mt-4 uppercase">back</a>
+                    </div>
+                </div>
 
     </div>
 {% endblock %}
