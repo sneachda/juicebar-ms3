@@ -22,12 +22,12 @@
 
     <div class="row justify-content-center">
         {% for recipe in recipes %}
-            <div class="col-md-3 card text-center card-recipe">
+            <div class="col-md-3 card text-center card-recipe img-hover">
                 {% if recipe.recipe_image %}
-                    <img class="card-img-top image-fluid" src="{{ recipe.recipe_image }}" alt="Card image cap">
+                    <figure><img class="card-img-top image-fluid" src="{{ recipe.recipe_image }}" alt="Card image cap"></figure>
                 {% else %}
-                    <img class="card-img-top image-fluid" src="{{ url_for('static', filename='img/recipe_x.jpg') }}"
-                         alt="Card image cap"/>
+                    <figure><img class="card-img-top image-fluid" src="{{ url_for('static', filename='img/recipe_x.jpg') }}"
+                         alt="Card image cap"/></figure>
                 {% endif %}
                 <div class="card-body">
                     <h4 class="card-title recipe-title">{{ recipe.recipe_name }}</h4>
