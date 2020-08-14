@@ -33,10 +33,10 @@ hr {
 }
 
 .full-recipe-img {
-    margin: 20px;
-    box-shadow: 5px 5px 5px #f0e7e7;
-    -webkit-box-shadow: 5px 5px 5px #f0e7e7;
-    -moz-box-shadow: 5px 5px 5px #f0e7e7;
+    margin-top: 20px;
+    box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
+    -webkit-box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
+    -moz-box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
 }
 
 .img-hover figure img {
@@ -44,17 +44,17 @@ hr {
 	filter: grayscale(100%);
 	-webkit-transition: .2s ease-in-out;
 	transition: .2s ease-in-out;
-     box-shadow: 5px 5px 5px #f0e7e7;
-    -webkit-box-shadow: 5px 5px 5px #f0e7e7;
-    -moz-box-shadow: 5px 5px 5px #f0e7e7;
+     box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
+    -webkit-box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
+    -moz-box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
 }
 
 .img-hover figure:hover img {
 	-webkit-filter: grayscale(0);
 	filter: grayscale(0);
-     box-shadow: 5px 5px 10px #ECC8AF;
-    -webkit-box-shadow: 5px 5px 10px #ECC8AF;
-    -moz-box-shadow: 5px 5px 10px #ECC8AF;
+     box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
+    -webkit-box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
+    -moz-box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
 
 }
 
@@ -63,9 +63,9 @@ transition: 1s ease;
 }
 
 .img-hover-2 figure:hover img {
--webkit-transform: scale(0.8);
--ms-transform: scale(0.8);
-transform: scale(0.8);
+-webkit-transform: scale(0.6);
+-ms-transform: scale(0.6);
+transform: scale(0.6);
 transition: 1s ease;
 }
 
