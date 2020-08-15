@@ -23,13 +23,14 @@ hr {
 
 /*----------------------------------------------------Images */
 .register-image {
-    padding: 0;
+    margin: 15px;
     mix-blend-mode: hard-light;
     opacity: 0.6;
     border-radius: 10px;
-    max-width: 100%;
-    height: auto;
-    position: center;
+    border: 1px solid #F0E7E7;
+    box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
+    -webkit-box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
+    -moz-box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
 }
 
 .card-img-top {
@@ -45,33 +46,33 @@ hr {
 }
 
 .img-hover figure img {
-	-webkit-filter: grayscale(100%);
-	filter: grayscale(100%);
-	-webkit-transition: .2s ease-in-out;
-	transition: .2s ease-in-out;
-     box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+    box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
     -webkit-box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
     -moz-box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
 }
 
 .img-hover figure:hover img {
-	-webkit-filter: grayscale(0);
-	filter: grayscale(0);
-     box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+    box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
     -webkit-box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
     -moz-box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
 
 }
 
 .img-hover-2 figure img {
-transition: 1s ease;
+    transition: 1s ease;
 }
 
 .img-hover-2 figure:hover img {
--webkit-transform: scale(0.9);
--ms-transform: scale(0.9);
-transform: scale(0.9);
-transition: 1s ease;
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+    transition: 1s ease;
 }
 
 /*----------------------------------------------------General Text */
@@ -110,16 +111,11 @@ transition: 1s ease;
 .reg-title, .log-title {
     font-weight: 200;
     font-size: 40px;
-    position: absolute;
+    padding: 15px;
+    margin-top: 30px;
 }
 
-.reg-title {
-    top: 20%;
-    left: 30%;
-    right: 30%;
-}
-
-.main-p{
+.main-p {
     font-family: "Merriweather", sans-serif;
     color: #f0e7e7;
     text-align: center;
@@ -141,7 +137,7 @@ transition: 1s ease;
     color: #f0e7e7;
 }
 
-.a-here{
+.a-here {
     color: #F0E7E7;
     background: #323036;
     padding: 2px;
@@ -150,7 +146,7 @@ transition: 1s ease;
     position: center;
 }
 
-.a-here:hover{
+.a-here:hover {
     background: #6D6875;
     color: #F0E7E7;
 
@@ -158,7 +154,7 @@ transition: 1s ease;
 
 
 /*----------------------------------------------------Navigation */
-.navbar-custom{
+.navbar-custom {
     padding: 20px;
     margin-left: 30px;
     margin-right: 30px;
@@ -173,20 +169,20 @@ transition: 1s ease;
     opacity: 0.8;
     z-index: 2;
     border-radius: 30px;
-     box-shadow: 1.5px 1.5px 3px #f0e7e7;
+    box-shadow: 1.5px 1.5px 3px #f0e7e7;
     -webkit-box-shadow: 1.5px 1.5px 3px #f0e7e7;
     -moz-box-shadow: 1.5px 1.5px 3px #f0e7e7;
 }
 
-.grow img{
-transition: 1s ease;
+.grow img {
+    transition: 1s ease;
 }
 
-.grow img:hover{
--webkit-transform: scale(1.1);
--ms-transform: scale(1.1);
-transform: scale(1.1);
-transition: 1s ease;
+.grow img:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: 1s ease;
 }
 
 .dropdown-menu-custom a {
@@ -202,13 +198,13 @@ transition: 1s ease;
     margin: 0;
 }
 
- .nav-item{
+.nav-item {
     text-align: right;
 }
 
 /*----------------------------------------------------Carousel, Title */
 
-.container-title{
+.container-title {
     padding-left: 30px;
     padding-right: 30px;
 
@@ -225,6 +221,7 @@ transition: 1s ease;
     filter: invert(100%);
 }
 
+
 /*----------------------------------------------------Forms */
 .spacer {
     padding: 5px;
@@ -234,31 +231,27 @@ transition: 1s ease;
     padding-top: 10px;
     padding-right: 30px;
     padding-left: 30px;
-    position: relative;
 }
 
 
 .form-group {
-    padding-top: 5px;
     text-align: center;
 }
+
+.reg-log-btn {
+    padding-top: 15px;
+}
+
 
 .center-already {
     text-align: center;
     color: #f0e7e7;
-
-}
-
-.form-label {
-    border-radius: 10px;
-    padding: 3px;
 }
 
 .required:after {
-  content:" *";
-  color: red;
+    content: " *";
+    color: red;
 }
-
 
 
 /*----------------------------------------------------Recipes */
@@ -288,7 +281,7 @@ transition: 1s ease;
     border-radius: 10px;
 }
 
-.list-style{
+.list-style {
     color: #F0E7E7;
     background: #000000;
     border: 1px solid #F0E7E7;
