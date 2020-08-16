@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="row">
-        <div class="col-12 col-center">
-            <h4 class="account-title"><span>{{ session.username }}</span>'s recipes</h4>
-        </div>
-    </div>
 
-      <nav aria-label="Page navigation example">
+    <div class="container-fluid">
+
+
+        <div class="row">
+            <div class="col-12 col-center">
+                <h4 class="recipe-title uppercase"><span>{{ session.username }}</span>'s recipes</h4>
+            </div>
+        </div>
+
+        <nav aria-label="Page navigation example">
             <ul class="pagination pagination-sm justify-content-center">
                 {% for page_num in pages %}
                     {% if page_num == current_page %}
@@ -20,36 +24,40 @@
             </ul>
         </nav>
 
-    <div class="row justify-content-center">
-        {% for recipe in recipes %}
-            <div class="col-md-3 card text-center card-recipe img-hover">
-                {% if recipe.recipe_image %}
-                    <figure><img class="card-img-top image-fluid" src="{{ recipe.recipe_image }}" alt="Card image cap"></figure>
-                {% else %}
-                    <figure><img class="card-img-top image-fluid" src="{{ url_for('static', filename='img/recipe_x.jpg') }}"
-                         alt="Card image cap"/></figure>
-                {% endif %}
-                <div class="card-body">
-                    <h4 class="card-title recipe-title">{{ recipe.recipe_name }}</h4>
-                    <p class="card-text recipe-p">{{ recipe.recipe_description }}</p>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item list-style"><i
-                                class="fas fa-clock list-padding"></i>{{ recipe.prep_time }}</li>
-                        <li class="list-group-item list-style"><i
-                                class="fas fa-utensils list-padding"></i> {{ recipe.it_serves }}</li>
-                    </ul>
-                    <div class="row">
-                        <div class="col card-body">
-                            <a href="{{ url_for('recipe_full_page', recipe_id=recipe._id) }}"
-                               class="btn btn-outline-info btn-custom">full recipe</a>
+        <div class="row justify-content-center">
+            {% for recipe in recipes %}
+                <div class="col-md-3 card text-center card-recipe img-hover">
+                    {% if recipe.recipe_image %}
+                        <figure><img class="card-img-top image-fluid" src="{{ recipe.recipe_image }}"
+                                     alt="Card image cap"></figure>
+                    {% else %}
+                        <figure><img class="card-img-top image-fluid"
+                                     src="{{ url_for('static', filename='img/recipe_x.jpg') }}"
+                                     alt="Card image cap"/></figure>
+                    {% endif %}
+                    <div class="card-body">
+                        <h4 class="card-title recipe-title">{{ recipe.recipe_name }}</h4>
+                        <p class="card-text recipe-p">{{ recipe.recipe_description }}</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item list-style"><i
+                                    class="fas fa-clock list-padding"></i>{{ recipe.prep_time }}</li>
+                            <li class="list-group-item list-style"><i
+                                    class="fas fa-utensils list-padding"></i> {{ recipe.it_serves }}</li>
+                        </ul>
+                        <div class="row">
+                            <div class="col card-body">
+                                <a href="{{ url_for('recipe_full_page', recipe_id=recipe._id) }}"
+                                   class="btn btn-outline-info btn-custom">full recipe</a>
+                            </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
-            </div>
-        {% else %}
-            <p class="main-p">You haven't created recipes. Click <a class="a-here" href="{{ url_for('add_recipe') }}">here</a>to
-                add one </p>
-        {% endfor %}
+            {% else %}
+                <p class="main-p">You haven't created recipes. Click <a class="a-here" href="{{ url_for('add_recipe') }}">here</a>
+                    to add one </p>
+            {% endfor %}
+        </div>
     </div>
+
 {% endblock %}
