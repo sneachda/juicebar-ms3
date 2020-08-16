@@ -7,22 +7,25 @@
     <section id="registration-form">
 
         <div class="container-fluid container-form">
-            <div class="row justify-content-center">
-                <div class="col-md-4 form-column">
-                    <h2 class="reg-title">Login</h2>
-                    <img class="register-image image-fluid" src="{{ url_for('static', filename='img/register.jpg') }}"
+            <div class="row justify-content-sm-center">
+                <div class="col-sm-12 col-md-3">
+                    <img class="register-image image-fluid"
+                         src="{{ url_for('static', filename='img/login-register.jpg') }}"
                          alt="registration">
-                    <hr>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                    <h2 class="reg-title">Login</h2>
                     <form action="" method="POST">
-                    {{ form.hidden_tag() }}
-                        <div class="form-group form-label">
+                        <hr>
+                        {{ form.hidden_tag() }}
+                        <div class="form-group recipe-p form-label">
                             <label for="username">Username <i class="fas fa-question-circle"></i></label>
                             {{ form.username(placeholder="username", id="username", class="from=label") }}
                             {% for error in form.username.errors %}
                                 <span class="error-message">{{ error }}</span>
                             {% endfor %}
                         </div>
-                        <div class="form-group form-label">
+                        <div class="form-group recipe-p form-label">
                             <label for="password">Password <i class="fas fa-lock"></i></label>
                             {{ form.password (placeholder="password", id="password", class="from=label") }}
                             {% for error in form.password.errors %}
@@ -34,30 +37,32 @@
                         <div class="row">
                             <div class="col-12">
                                 {% with messages = get_flashed_messages() %}
-                                {% if messages %}
-                                    {% for message in messages %}
-                                        <p class="error-message">
-                                            {{ message }}
-                                        </p>
-                                    {% endfor %} {% endif %} {% endwith %}
+                                    {% if messages %}
+                                        {% for message in messages %}
+                                            <p class="error-message">
+                                                {{ message }}
+                                            </p>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endwith %}
                             </div>
-
                         </div>
 
-
-                        <div class="form-group">
+                        <div class="form-group reg-log-btn">
                             {{ form.submit(class="btn btn-outline-info") }}
                         </div>
+                        <hr>
 
                         <!--Link to register page-->
 
-<div class="row center-already">
-    <div class="col s12">
-        <small>Not a user?
-            <a class="a-here" href="{{ url_for('register') }}">Register here!</a></small>
-    </div>
-</div>
-                        <hr>
+                        <div class="row center-already">
+
+                            <div class="col s12">
+                                <small>Not a user?
+                                    <a class="a-here" href="{{ url_for('register') }}">Register here!</a></small>
+                            </div>
+
+                        </div>
                     </form>
                 </div>
             </div>

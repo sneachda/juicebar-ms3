@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 
+    <!--All recipes container-->
+
     <div class="container-fluid container-recipe">
 
         <div class="row">
             <div class="col-12 col-center">
-                <h4 class="account-title uppercase">{{ title }}</h4>
+                <h4 class="recipe-title uppercase">{{ title }}</h4>
             </div>
         </div>
 
@@ -46,14 +48,11 @@
                                    class="btn btn-outline-info btn-custom">full recipe</a>
                             </div>
                         </div>
-
                     </div>
                 </div>
             {% endfor %}
         </div>
-
     </div>
-
 
 {% endblock %}
 

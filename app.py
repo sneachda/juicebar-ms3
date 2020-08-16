@@ -5,10 +5,7 @@ from flask_bcrypt import Bcrypt
 from forms import RegistrationForm, LoginForm, RecipeForm
 import math
 from bson.objectid import ObjectId
-
-from os import path
-
-if path.exists("env.py"):
+if os.path.exists("env.py"):
     import env
 
 app = Flask(__name__)
@@ -271,4 +268,3 @@ if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
             port=int(os.getenv("PORT", "5000")),
             debug=True)
-

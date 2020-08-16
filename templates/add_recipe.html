@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
+    <!--Add Recipe-->
 
     <section id="new-recipe">
         <div class="container">
@@ -8,17 +9,19 @@
                 {{ form.hidden_tag() }}
                 <div class="row">
                     <div class="col text-center">
-                        <h2>New Recipe</h2>
+                        <h2 class="recipe-title">New Recipe</h2>
                     </div>
                 </div>
                 <div class="form-row mt-4">
-                    <div class="col-8">
-                        <label class="required uppercase" for="recipe_name"> Recipe Name <i class="fas fa-question-circle"></i>
+                    <div class="col-sm-8 mt-4">
+                        <label class="required recipe-p uppercase" for="recipe_name"> Recipe Name <i
+                                class="fas fa-question-circle"></i>
                             <i class="fas fa-asterisk"></i></label>
                         {{ form.recipe_name(placeholder="Recipe Name", id="recipe_name", class="validate form-control", type="text") }}
                     </div>
-                    <div class="col-4">
-                        <label class="required uppercase" for="recipe_category"> Category <i class="fas fa-question-circle"></i>
+                    <div class="col-sm-4 mt-4">
+                        <label class="required recipe-p uppercase" for="recipe_category"> Category <i
+                                class="fas fa-question-circle"></i>
                             <i class="fas fa-asterisk"></i></label>
 
                         <select id="category_name" name="category_name" class="validate form-control" required>
@@ -29,44 +32,49 @@
                         </select>
                     </div>
                 </div>
-                    <div class="form-row mt-4">
-                        <div class="col">
-                            <label class="required uppercase" for="recipe_description"> Recipe Description <i class="fas fa-question-circle"></i>
-                                <i class="fas fa-asterisk"></i></label>
-                            {{ form.recipe_description(placeholder="Recipe Description - few words about your recipe", id="recipe_description", class="validate form-control", type="text") }}
-                        </div>
+                <div class="form-row mt-4">
+                    <div class="col-sm-12 mt-2">
+                        <label class="required recipe-p uppercase" for="recipe_description"> Recipe Description <i
+                                class="fas fa-question-circle"></i>
+                            <i class="fas fa-asterisk"></i></label>
+                        {{ form.recipe_description(placeholder="Recipe Description - few words about your recipe", id="recipe_description", class="validate form-control", type="text") }}
                     </div>
-            <div class="form-row mt-4">
-                    <div class="col-4">
-                        <label  class="uppercase" for="prep_time"> Recipe Image <i class="fas fa-question-circle"></i>
-                            </label>
+                </div>
+                <div class="form-row mt-4">
+                    <div class="col-sm-12 col-md-4 mt-2">
+                        <label class="recipe-p uppercase" for="prep_time"> Recipe Image <i class="fas fa-question-circle"></i>
+                        </label>
                         {{ form.recipe_image(placeholder="Recipe Image URL", id="recipe_image", class="validate form-control") }}
                     </div>
-            <div class="col-4">
-                        <label class="required uppercase" for="prep_time"> Cooking Time <i class="fas fa-question-circle"></i>
+                    <div class="col-sm-12 col-md-4 mt-2">
+                        <label class="required recipe-p uppercase" for="prep_time"> Cooking Time <i
+                                class="fas fa-question-circle"></i>
                             <i class="fas fa-asterisk"></i></label>
                         {{ form.prep_time(placeholder="Cooking time - in minutes", id="prep_time", class="validate form-control", type="number") }}
                     </div>
-                    <div class="col-4">
-                        <label class="required uppercase" for="it_serves"> Number of Servings <i class="fas fa-question-circle"></i>
+                    <div class="col-sm-12 col-md-4 mt-2">
+                        <label class="required recipe-p uppercase" for="it_serves"> Number of Servings <i
+                                class="fas fa-question-circle"></i>
                             <i class="fas fa-asterisk"></i></label>
 
-                       {{ form.it_serves(placeholder="Number of Servings", id="it_serves", class="validate form-control", type="number") }}
+                        {{ form.it_serves(placeholder="Number of Servings", id="it_serves", class="validate form-control", type="number") }}
                     </div>
                 </div>
-                <div class="col">
-                <div class="form-group form-label">
-                    <label class="required uppercase" for="recipe_ingredients"> Recipe Ingredients <i class="fas fa-question-circle"></i>
-                        <i class="fas fa-asterisk"></i></label>
-                    {{ form.recipe_ingredients(placeholder="Recipe Ingredients", id="recipe_ingredients", class="validate form-control", type="text") }}
+                <div class="col-sm-12 mt-4">
+                    <div class="form-group form-label">
+                        <label class="required recipe-p uppercase" for="recipe_ingredients"> Recipe Ingredients <i
+                                class="fas fa-question-circle"></i>
+                            <i class="fas fa-asterisk"></i></label>
+                        {{ form.recipe_ingredients(placeholder="Recipe Ingredients", id="recipe_ingredients", class="validate form-control", type="text") }}
+                    </div>
                 </div>
-                </div>
-            <div class="col">
-                <div class="form-group form-label">
-                    <label class="required uppercase" for="recipe_method"> Directions <i class="fas fa-question-circle"></i>
-                        <i class="fas fa-asterisk"></i></label>
-                    {{ form.recipe_method(placeholder="Recipe Directions", id="recipe_method", class="validate form-control", type="text") }}
-                </div>
+                <div class="col-sm-12 mt-4">
+                    <div class="form-group form-label">
+                        <label class="required recipe-p uppercase" for="recipe_method"> Directions <i
+                                class="fas fa-question-circle"></i>
+                            <i class="fas fa-asterisk"></i></label>
+                        {{ form.recipe_method(placeholder="Recipe Directions", id="recipe_method", class="validate form-control", type="text") }}
+                    </div>
                 </div>
 
                 <!--Error messages-->
@@ -78,26 +86,23 @@
                                     <p class="error-message">
                                         {{ message }}
                                     </p>
-                                {% endfor %} {% endif %} {% endwith %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
                     </div>
-
                 </div>
 
-
                 <hr>
+
                 <div class="row mt-4 justify-content-center">
                     <div class="form-group">
                         {{ form.submit(class="btn btn-outline-info mt-4") }}
-
-                        <a href="{{ url_for('index') }}" class="btn btn-outline-danger mt-4">Cancel</a>
-
+                        <a href="{{ url_for('my_recipes') }}" class="btn btn-outline-danger mt-4">Cancel</a>
                     </div>
                 </div>
             </form>
+        </div>
 
-        </div>
-        </div>
-        </div>
     </section>
 
 

@@ -19,11 +19,12 @@ hr {
     margin-right: 30px;
     margin-bottom: 10px;
     border-top: 1px double #f0e7e7;
+    padding: 3px;
 }
 
 /*----------------------------------------------------Images */
 .register-image {
-    margin: 15px;
+    margin-bottom: 15px;
     mix-blend-mode: hard-light;
     opacity: 0.6;
     border-radius: 10px;
@@ -38,6 +39,9 @@ hr {
 }
 
 .full-recipe-img {
+    max-width: 100%;
+    display:block;
+    height: auto;
     margin-top: 20px;
     border-radius: 10px;
     box-shadow: 5px 5px #000000, 5px 5px 0 1px #ffffff;
@@ -111,8 +115,7 @@ hr {
 .reg-title, .log-title {
     font-weight: 200;
     font-size: 40px;
-    padding: 15px;
-    margin-top: 30px;
+    padding: 10px;
 }
 
 .main-p {
@@ -127,6 +130,7 @@ hr {
     text-shadow: 2px 2px 2px #FBBFCA;
     border: 1px solid #F0E7E7;
     border-radius: 10px;
+    padding: 5px;
 
 }
 
@@ -135,6 +139,7 @@ hr {
     text-align: center;
     font-weight: 100;
     color: #f0e7e7;
+    padding: 3px;
 }
 
 .a-here {
@@ -150,6 +155,10 @@ hr {
     background: #6D6875;
     color: #F0E7E7;
 
+}
+
+.logged-display {
+    text-align: center;
 }
 
 
@@ -236,6 +245,8 @@ hr {
 
 .form-group {
     text-align: center;
+    border-radius: 10px;
+    opacity: 0.9;
 }
 
 .reg-log-btn {
