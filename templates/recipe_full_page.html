@@ -7,6 +7,21 @@
 
         <div class="container-fluid container-full_page">
 
+            <!--Flash Messages-->
+            <div class="row">
+                <div class="col-12">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul>
+                                {% for message in messages %}
+                                    <li class="success">{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-12">
                     <!--Title-->

@@ -180,6 +180,7 @@ def update_recipe(recipe_id):
             'recipe_image': request.form.get('recipe_image'),
             'author': session['username']
         })
+        flash("Your recipe was updated!")
         return redirect(url_for("recipe_full_page", recipe_id=recipe_id))
 
 
