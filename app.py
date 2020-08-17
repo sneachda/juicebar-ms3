@@ -4,6 +4,7 @@ from flask_pymongo import PyMongo, pymongo
 from flask_bcrypt import Bcrypt
 from forms import RegistrationForm, LoginForm, RecipeForm
 import math
+from werkzeug.http import dump_cookie
 from bson.objectid import ObjectId
 if os.path.exists("env.py"):
     import env
@@ -247,6 +248,18 @@ def logout():
             username + "!")
 
         return redirect(url_for('index'))
+
+
+def set_cookie(response, *args, **kwargs):
+    cookie = dump_cookie(*args, **kwargs)
+
+    if 'samesite' in kwargs and kwargs['samesite'] is None:
+        cookie = "{}; {}".format(cookie, b'SameSite=None'.decode('latin1'))
+
+    response.headers.add(
+        'Set-Cookie',
+        cookie
+    )
 
 
 if __name__ == '__main__':

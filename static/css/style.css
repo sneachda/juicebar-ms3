@@ -249,6 +249,26 @@ hr {
     padding-left: 30px;
 }
 
+.container-add {
+    position: relative;
+    display: block;
+}
+
+.container-add::after {
+    content: "";
+    background-image: url('../img/background.jpg');
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    background-position: center;
+}
+
+
 
 .form-group {
     text-align: center;
@@ -279,12 +299,10 @@ hr {
 }
 
 .container-full_page {
-    position: relative;
     padding-top: 10px;
-    padding-right: 30px;
-    padding-left: 30px;
     border: 1px solid #F0E7E7;
     border-radius: 10px;
+    width: 95%;
 }
 
 .pagination li a {
@@ -365,5 +383,18 @@ hr {
 
 
 /*----------------------------------------------------Media Queries */
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 38px;
+    }
+
+    .main-p {
+        font-size: 20px;
+    }
+}
+
+
+
 
 
