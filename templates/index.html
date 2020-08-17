@@ -3,19 +3,22 @@
 
     <div class="container-fluid container-title">
 
-    <div class="row">
-        <div class="col-12">
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <ul>
-                        {% for message in messages %}
-                            <li class="success">{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            {% endwith %}
+        <!--Flash Messages-->
+        <div class="row">
+            <div class="col-12">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul>
+                            {% for message in messages %}
+                                <li class="success">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </div>
         </div>
-    </div>
+
+        <!--Title-->
 
         <div class="row">
             <div class="col md-4">
@@ -25,6 +28,8 @@
     </div>
 
     <hr>
+
+    <!--Carousel-->
 
     <div class="container-fluid container-carousel">
         <div id="recipeCarousel" class="carousel slide" data-ride="carousel" data-interval="9000">
@@ -61,19 +66,20 @@
 
     <hr>
 
+    <!--Paragraph with link or browse - depending if user logged in or not-->
 
     {% if session.username %}
         <div class="container-fluid container-title">
             <div class="row">
                 <div class="col logged-display">
-                     <a href="{{ url_for('get_recipes') }}" class="btn btn-outline-light mt-4">All Recipes</a>
-                     <a href="{{ url_for('get_juices') }}" class="btn btn-outline-light mt-4">Juices</a>
-                     <a href="{{ url_for('get_smoothies') }}" class="btn btn-outline-light mt-4">Smoothies</a>
+                    <a href="{{ url_for('get_recipes') }}" class="btn btn-outline-light mt-4">All Recipes</a>
+                    <a href="{{ url_for('get_juices') }}" class="btn btn-outline-light mt-4">Juices</a>
+                    <a href="{{ url_for('get_smoothies') }}" class="btn btn-outline-light mt-4">Smoothies</a>
                 </div>
             </div>
         </div>
     {% else %}
-         <div class="container-fluid container-title">
+        <div class="container-fluid container-title">
             <div class="row">
                 <div class="col">
                     <p class="main-p">Great way to explore, add and save recipes you love.
@@ -82,8 +88,6 @@
                 </div>
             </div>
         </div>
-
     {% endif %}
-
 
 {% endblock %}

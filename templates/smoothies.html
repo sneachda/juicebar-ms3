@@ -1,15 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
+    <!--All Smoothies-->
 
     <div class="container-fluid container-recipe">
+
+        <!--Title-->
 
         <div class="row">
             <div class="col-12 col-center">
                 <h4 class="recipe-title uppercase">{{ title }}</h4>
             </div>
         </div>
+
+        <!--Pagination-->
 
         <nav aria-label="Page navigation example">
             <ul class="pagination pagination-sm justify-content-center">
@@ -24,6 +28,9 @@
                 {% endfor %}
             </ul>
         </nav>
+
+        <!--Recipes Display-->
+
         <div class="row justify-content-center">
             {% for recipe in recipes %}
                 <div class="col-md-3 card text-center card-recipe img-hover">
@@ -58,6 +65,4 @@
 
     </div>
 
-
 {% endblock %}
-

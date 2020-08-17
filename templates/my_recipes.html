@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
+    <!--My Recipes Container-->
+
     <div class="container-fluid container-my-recipes">
 
+        <!--Title-->
 
         <div class="row">
             <div class="col-12 col-center">
                 <h4 class="recipe-title uppercase"><span>{{ session.username }}</span>'s recipes</h4>
             </div>
         </div>
+
+        <!--Pagination-->
 
         <nav aria-label="Page navigation example">
             <ul class="pagination pagination-sm justify-content-center">
@@ -23,6 +28,8 @@
                 {% endfor %}
             </ul>
         </nav>
+
+        <!--Recipes Display-->
 
         <div class="row justify-content-center">
             {% for recipe in recipes %}
@@ -54,8 +61,13 @@
                     </div>
                 </div>
             {% else %}
-                <p class="main-p main-p-margin">You haven't created recipes. Click <a class="a-here" href="{{ url_for('add_recipe') }}">here</a>
+
+                <!--if no recipes created, this paragraph is displayed-->
+
+                <p class="main-p main-p-margin">You haven't created recipes. Click <a class="a-here"
+                                                                                      href="{{ url_for('add_recipe') }}">here</a>
                     to add one </p>
+
             {% endfor %}
         </div>
     </div>

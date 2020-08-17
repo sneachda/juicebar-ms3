@@ -1,93 +1,90 @@
 {% extends 'base.html' %}
 {% block content %}
 
+    <!--Full Page Recipe Container-->
+
     <section id="full-page">
 
-    <div class="container-fluid container-full_page">
+        <div class="container-fluid container-full_page">
 
-        <div class="row">
-            <div class="col-12">
-                {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        {% for message in messages %}
-                            <p class="error-message">
-                                {{ message }}
-                            </p>
-                        {% endfor %}
+            <div class="row">
+                <div class="col-12">
+                    <!--Title-->
+                    <h4 class="recipe-title p-3">{{ full_recipe.recipe_name }}</h4>
+                </div>
+                <!--Recipe Form Display-->
+                <div class="col-md-6 img-hover-2">
+                    {% if full_recipe.recipe_image %}
+                        <figure><img class="image-fluid full-recipe-img" src="{{ full_recipe.recipe_image }}"
+                                     alt="recipe image"/></figure>
+                    {% else %}
+                        <figure><img class="image-fluid full-recipe-img"
+                                     src="{{ url_for('static', filename='img/recipe_x.jpg') }}"
+                                     alt="recipe image"/></figure>
                     {% endif %}
-                {% endwith %}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <h4 class="recipe-title p-3">{{ full_recipe.recipe_name }}</h4>
-            </div>
-            <div class="col-md-6 img-hover-2">
-                {% if full_recipe.recipe_image %}
-                    <figure><img class="image-fluid full-recipe-img" src="{{ full_recipe.recipe_image }}"
-                                 alt="recipe image"/></figure>
-                {% else %}
-                    <figure><img class="image-fluid full-recipe-img"
-                                 src="{{ url_for('static', filename='img/recipe_x.jpg') }}"
-                                 alt="recipe image"/></figure>
-                {% endif %}
-            </div>
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-12">
-                        <p class="recipe-p"><i class="fas fa-pencil-alt p-2"></i>Description</p>
-                    </div>
-                    <div class="col-12">
-                        <p class="recipe-p">{{ full_recipe.recipe_description }}</p>
-                        <hr>
-                    </div>
-                    <div class="col-md-6">
-                        <p class="recipe-p"><i class="far fa-clock p-2"></i>Time: {{ full_recipe.prep_time }}</p>
-                        <hr>
-                    </div>
-                    <div class="col-md-6">
-                        <p class="recipe-p"><i class="far fa-check-circle p-2"></i>Serving: {{ full_recipe.it_serves }}
-                        </p>
-                        <hr>
-                    </div>
-                    <div class="col-12">
-                        <p class="recipe-p"><i class="fas fa-list-ol p-2"></i>Ingredients</p>
-                    </div>
-                    <div class="col-12">
-                        <p class="recipe-p">{{ full_recipe.recipe_ingredients }} </p>
-                        <hr>
-                    </div>
-                    <div class="col-12">
-                        <p class="recipe-p"><i class="fas fa-list-alt p-2"></i>Directions</p>
-                    </div>
-                    <div class="col-12">
-                        <p class="recipe-p">
-                            {{ full_recipe.recipe_method }}</p>
-                        <hr>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="recipe-p"><i class="fas fa-pencil-alt p-2"></i>Description</p>
+                        </div>
+                        <div class="col-12">
+                            <p class="recipe-p">{{ full_recipe.recipe_description }}</p>
+                            <hr>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="recipe-p"><i class="far fa-clock p-2"></i>Time: {{ full_recipe.prep_time }}</p>
+                            <hr>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="recipe-p"><i
+                                    class="far fa-check-circle p-2"></i>Serving: {{ full_recipe.it_serves }}
+                            </p>
+                            <hr>
+                        </div>
+                        <div class="col-12">
+                            <p class="recipe-p"><i class="fas fa-list-ol p-2"></i>Ingredients</p>
+                        </div>
+                        <div class="col-12">
+                            <p class="recipe-p">{{ full_recipe.recipe_ingredients }} </p>
+                            <hr>
+                        </div>
+                        <div class="col-12">
+                            <p class="recipe-p"><i class="fas fa-list-alt p-2"></i>Directions</p>
+                        </div>
+                        <div class="col-12">
+                            <p class="recipe-p">
+                                {{ full_recipe.recipe_method }}</p>
+                            <hr>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        {% if session.username == full_recipe.author %}
-            <div class="row mt-4 ">
-                <div class="col-sm-12 col-center">
-                    <a href="{{ url_for('edit_recipe', recipe_id=full_recipe._id) }}"
-                       class="btn btn-outline-info mt-4 uppercase">edit</a>
 
-                    <a href="{{ url_for('delete_recipe', recipe_id=full_recipe._id) }}"
-                       class="btn btn-outline-danger mt-4 uppercase">delete</a>
+            <!--Id user logged in, it can update or remove their own recipes-->
 
+            {% if session.username == full_recipe.author %}
+                <div class="row mt-4 ">
+                    <div class="col-sm-12 col-center">
+                        <a href="{{ url_for('edit_recipe', recipe_id=full_recipe._id) }}"
+                           class="btn btn-outline-info mt-4 uppercase">edit</a>
+
+                        <a href="{{ url_for('delete_recipe', recipe_id=full_recipe._id) }}"
+                           class="btn btn-outline-danger mt-4 uppercase">delete</a>
+
+                    </div>
+                </div>
+            {% endif %}
+
+            <!--Back button always displayed-->
+
+            <div class="row mt-4 justify-content-center">
+                <div class="form-group">
+                    <a href="javascript: history.go(-1)" class="btn btn-outline-light mt-4 uppercase">back</a>
                 </div>
             </div>
-        {% endif %}
 
-        <div class="row mt-4 justify-content-center">
-            <div class="form-group">
-                <a href="javascript: history.go(-1)" class="btn btn-outline-light mt-4 uppercase">back</a>
-            </div>
         </div>
-
-    </div>
 
     </section>
 

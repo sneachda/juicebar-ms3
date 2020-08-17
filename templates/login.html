@@ -21,6 +21,8 @@
             </div>
         </div>
 
+        <!--Login Form-->
+
         <div class="container-fluid container-form">
             <div class="row justify-content-sm-center">
                 <div class="col-sm-12 col-md-6 col-lg-3">
@@ -48,6 +50,8 @@
                             {% endfor %}
                         </div>
 
+                        <!--Button-->
+
                         <div class="form-group reg-log-btn">
                             {{ form.submit(class="btn btn-outline-info") }}
                         </div>
@@ -57,27 +61,16 @@
                         <!--Link to register page-->
 
                         <div class="row center-already">
-
                             <div class="col s12">
                                 <small>Not a user?
                                     <a class="a-here" href="{{ url_for('register') }}">Register here!</a></small>
                             </div>
-
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+
     </section>
 
-
-
 {% endblock %}
-
-
-
-
-
-
-
-

@@ -16,8 +16,6 @@
     <!-- favicon, courtesy to mmtuts: https://www.youtube.com/watch?v=kEf1xSwX5D8 -->
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/logo.jpg') }}" type="image/jpg"/>
 
-
-
     <!--To assign different headings for each page: -->
     {% if title %}
         <title>JuiceBar - {{ title }}</title>
@@ -37,7 +35,8 @@
             <img src="{{ url_for('static', filename='img/logo.jpg') }}"
                  class="logo" alt="JuiceBar">
         </a>
-        <button class="navbar-toggler nav-button-custom" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
+        <button class="navbar-toggler nav-button-custom" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent-4"
                 aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -83,11 +82,14 @@
     </nav>
 </header>
 
+<!--Main content-->
 
 <main>
-     {% block content %}
-     {% endblock %}
+    {% block content %}
+    {% endblock %}
 </main>
+
+<!--Footer-->
 
 <footer>
 
@@ -120,8 +122,8 @@
 </footer>
 
 
-<!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -135,4 +137,3 @@
 
 </body>
 </html>
-

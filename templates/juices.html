@@ -1,13 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
+    <!--All Juices-->
+
     <div class="container-fluid container-recipe">
+
+        <!--Title-->
 
         <div class="row">
             <div class="col-12 col-center">
                 <h4 class="recipe-title uppercase">{{ title }}</h4>
             </div>
         </div>
+
+        <!--Pagination-->
 
         <nav aria-label="Page navigation example">
             <ul class="pagination pagination-sm justify-content-center">
@@ -22,14 +28,19 @@
                 {% endfor %}
             </ul>
         </nav>
+
+        <!--Recipes Display-->
+
         <div class="row justify-content-center">
             {% for recipe in recipes %}
                 <div class="col-md-3 card text-center card-recipe img-hover">
                     {% if recipe.recipe_image %}
-                        <figure><img class="card-img-top image-fluid" src="{{ recipe.recipe_image }}" alt="Card image cap"></figure>
+                        <figure><img class="card-img-top image-fluid" src="{{ recipe.recipe_image }}"
+                                     alt="Card image cap"></figure>
                     {% else %}
-                        <figure><img class="card-img-top image-fluid" src="{{ url_for('static', filename='img/recipe_x.jpg') }}"
-                             alt="Card image cap"/></figure>
+                        <figure><img class="card-img-top image-fluid"
+                                     src="{{ url_for('static', filename='img/recipe_x.jpg') }}"
+                                     alt="Card image cap"/></figure>
                     {% endif %}
                     <div class="card-body">
                         <h4 class="card-title recipe-title">{{ recipe.recipe_name }}</h4>
@@ -46,7 +57,6 @@
                                    class="btn btn-outline-info btn-custom">full recipe</a>
                             </div>
                         </div>
-
                     </div>
                 </div>
             {% endfor %}
@@ -54,6 +64,4 @@
 
     </div>
 
-
 {% endblock %}
-
