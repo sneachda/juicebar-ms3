@@ -364,8 +364,8 @@ hr {
     font-size: 14px;
     line-height: 8px;
     margin-top: 30px;
-    color: #F0E7E7;
-    background: #323036;
+    color: #000000;
+    background: #F0E7E7;
     transition: all 0.25s ease-in-out;
     -moz-transition: all 0.25s ease-in-out;
     -webkit-transition: all 0.25s ease-in-out;
@@ -373,7 +373,8 @@ hr {
 }
 
 .social-links-footer li a i:hover {
-    background: #6D6875;
+    background: #000000;
+    color: #F0E7E7;
 }
 
 .footer-year {
@@ -381,7 +382,6 @@ hr {
     padding: 0;
     font-family: Merriweather, sans-serif;
 }
-
 
 
 /*----------------------------------------------------Media Queries */
