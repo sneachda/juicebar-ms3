@@ -6,31 +6,30 @@
 
     <section id="login-form">
 
-        <!--Error messages-->
-        <div class="row">
-            <div class="col-12">
-                {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        {% for message in messages %}
-                            <p class="error-message">
-                                {{ message }}
-                            </p>
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
+        <div class="container container-form">
+
+            <!--Error messages-->
+            <div class="row">
+                <div class="col-12">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <p class="error-message">
+                                    {{ message }}
+                                </p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </div>
             </div>
-        </div>
 
-        <!--Login Form-->
-
-        <div class="container-fluid container-form">
             <div class="row justify-content-sm-center">
-                <div class="col-sm-12 col-md-6 col-lg-3">
-                    <img class="image-fluid register-image"
-                         src="{{ url_for('static', filename='img/login-register.jpg') }}"
+                <div class="d-none d-sm-block col-md-3">
+                    <img class="image-fluid"
+                         src="{{ url_for('static', filename='img/water.png') }}"
                          alt="registration">
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="col-sm-6 col-md-3">
                     <h2 class="reg-title">Login</h2>
                     <form action="" method="POST">
                         <hr>
@@ -52,15 +51,13 @@
 
                         <!--Button-->
 
-                        <div class="form-group reg-log-btn">
-                            {{ form.submit(class="btn btn-outline-info") }}
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-info") }}
                         </div>
-                        <hr>
-
 
                         <!--Link to register page-->
 
-                        <div class="row center-already">
+                        <div class="row center-text">
                             <div class="col s12">
                                 <small>Not a user?
                                     <a class="a-here" href="{{ url_for('register') }}">Register here!</a></small>

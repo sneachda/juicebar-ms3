@@ -6,11 +6,11 @@ from forms import RegistrationForm, LoginForm, RecipeForm
 import math
 from werkzeug.http import dump_cookie
 from bson.objectid import ObjectId
+
 if os.path.exists("env.py"):
     import env
 
 app = Flask(__name__)
-
 
 # Config Settings & Environmental Variables located in env.py // connecting to database
 app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
@@ -19,7 +19,6 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 mongo = PyMongo(app)
 bcrypt = Bcrypt(app)
-
 
 '''
 Home Page
@@ -124,7 +123,8 @@ def add_recipe():
         if user_logged_in:
             # If user in DB, redirected to Create Recipe page
             form = RecipeForm()
-            return render_template('add_recipe.html', title='New Recipe', form=form, categories=mongo.db.categories.find())
+            return render_template('add_recipe.html', title='New Recipe', form=form,
+                                   categories=mongo.db.categories.find())
     else:
         # Render the page for user to be able to log in
         return render_template("login.html")
@@ -146,7 +146,7 @@ def insert_recipe():
             'it_serves': request.form.get('it_serves'),
             'recipe_image': request.form.get('recipe_image'),
             'author': session['username']
-            })
+        })
     flash('Your recipe was added!')
     return redirect(url_for('my_recipes'))
 
@@ -158,7 +158,8 @@ def edit_recipe(recipe_id):
     if 'username' in session:
         full_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
         form = RecipeForm()
-        return render_template('edit_recipe.html', title='Edit Recipe', full_recipe=full_recipe, form=form, categories=mongo.db.categories.find())
+        return render_template('edit_recipe.html', title='Edit Recipe', full_recipe=full_recipe, form=form,
+                               categories=mongo.db.categories.find())
     else:
         # Render the page for user to be able to log in
         return render_template("login.html")
@@ -260,19 +261,6 @@ def logout():
             username + "!")
 
         return redirect(url_for('index'))
-
-
-# cookies setting recommended by Chrome
-def set_cookie(response, *args, **kwargs):
-    cookie = dump_cookie(*args, **kwargs)
-
-    if 'samesite' in kwargs and kwargs['samesite'] is None:
-        cookie = "{}; {}".format(cookie, b'SameSite=None'.decode('latin1'))
-
-    response.headers.add(
-        'Set-Cookie',
-        cookie
-    )
 
 
 if __name__ == '__main__':

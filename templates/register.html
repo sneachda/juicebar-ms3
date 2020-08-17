@@ -1,37 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
 
+
     <!--Registration container-->
 
-    <!--Error messages-->
-    <div class="row">
-        <div class="col-12">
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    {% for message in messages %}
-                        <p class="error-message">
-                            {{ message }}
-                        </p>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-        </div>
-    </div>
+    <section id="login-form">
 
-    <!--registration Form-->
+        <div class="container container-form">
 
-    <section id="registration-form">
-        <div class="container-fluid container-form">
+            <!--Error messages-->
+            <div class="row">
+                <div class="col-12">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <p class="error-message">
+                                    {{ message }}
+                                </p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+
             <div class="row justify-content-sm-center">
-                <div class="col-sm-12 col-md-6 col-lg-3">
-                    <img class="register-image image-fluid"
-                         src="{{ url_for('static', filename='img/login-register.jpg') }}"
+                 <div class="d-none d-sm-block col-md-3">
+                    <img class="image-fluid"
+                         src="{{ url_for('static', filename='img/water.png') }}"
                          alt="registration">
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="col-sm-6 col-md-3">
                     <h2 class="reg-title">Register</h2>
-                    <hr>
                     <form action="" method="POST">
+                        <hr>
                         {{ form.hidden_tag() }}
                         <div class="form-group recipe-p form-label">
                             <label for="username">Username <i class="fas fa-question-circle"></i></label>
@@ -50,14 +51,13 @@
 
                         <!--Button-->
 
-                        <div class="form-group reg-log-btn">
-                            {{ form.submit(class="btn btn-outline-info") }}
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-info") }}
                         </div>
-                        <hr>
 
                         <!--Link to login page-->
 
-                        <div class="row center-already">
+                        <div class="row center-text">
                             <div class="col s12">
                                 <small>Already a user?
                                     <a class="a-here" href="{{ url_for('login') }}">Login here!</a></small>

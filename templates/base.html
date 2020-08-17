@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -24,28 +24,27 @@
     {% endif %}
 
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 
-<header>
 
-    <!--Navbar -->
-
-    <nav class="navbar navbar-expand-md navbar-dark navbar-custom">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-md navbar-light bg-light navbar-custom fixed-top">
+    <div class="container">
         <a class="grow" href="{{ url_for('index') }}">
             <img src="{{ url_for('static', filename='img/logo.jpg') }}"
                  class="logo" alt="JuiceBar">
         </a>
-        <button class="navbar-toggler nav-button-custom" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent-4"
-                aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+        <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown active">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-search"></i> Browse </a>
+
                     <div class="dropdown-menu dropdown-menu-right dropdown-info dropdown-menu-custom"
                          aria-labelledby="navbarDropdownMenuLink-4">
                         <a class="dropdown-item" href="{{ url_for('get_recipes') }}">All Recipe</a>
@@ -79,19 +78,20 @@
                 {% endif %}
             </ul>
         </div>
-    </nav>
-</header>
+    </div>
+</nav>
+
 
 <!--Main content-->
 
-<main>
+<main class="flex-shrink-0">
     {% block content %}
     {% endblock %}
 </main>
 
 <!--Footer-->
 
-<footer>
+<footer class="footer mt-auto py-3">
 
     <div class="container-fluid container-footer">
         <div class="row">

@@ -3,7 +3,7 @@
 
     <!--All Juices-->
 
-    <div class="container-fluid container-recipe">
+    <div class="container container-recipe">
 
         <!--Title-->
 
@@ -12,22 +12,6 @@
                 <h4 class="recipe-title uppercase">{{ title }}</h4>
             </div>
         </div>
-
-        <!--Pagination-->
-
-        <nav aria-label="Page navigation example">
-            <ul class="pagination pagination-sm justify-content-center">
-                {% for page_num in pages %}
-                    {% if page_num == current_page %}
-                        <li class="page-item"><a class="page-link" href="">{{ page_num }}</a></li>
-                    {% else %}
-                        <li class="page-item"><a class="page-link"
-                                                 href="{{ url_for('get_juices', current_page=page_num) }}">{{ page_num }}</a>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </nav>
 
         <!--Recipes Display-->
 
@@ -47,20 +31,36 @@
                         <p class="card-text recipe-p">{{ recipe.recipe_description }}</p>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item list-style"><i
-                                    class="fas fa-clock list-padding"></i>{{ recipe.prep_time }}</li>
+                                    class="fas fa-clock time-prep strong"></i>{{ recipe.prep_time }}</li>
                             <li class="list-group-item list-style"><i
-                                    class="fas fa-utensils list-padding"></i> {{ recipe.it_serves }}</li>
+                                    class="fas fa-utensils time-prep strong"></i> {{ recipe.it_serves }}</li>
                         </ul>
                         <div class="row">
                             <div class="col card-body">
                                 <a href="{{ url_for('recipe_full_page', recipe_id=recipe._id) }}"
-                                   class="btn btn-outline-info btn-custom">full recipe</a>
+                                   class="btn btn-info btn-custom">full recipe</a>
                             </div>
                         </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
+
+        <!--Pagination-->
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination pagination-sm justify-content-center">
+                {% for page_num in pages %}
+                    {% if page_num == current_page %}
+                        <li class="page-item"><a class="page-link" href="">{{ page_num }}</a></li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link"
+                                                 href="{{ url_for('get_juices', current_page=page_num) }}">{{ page_num }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </nav>
 
     </div>
 

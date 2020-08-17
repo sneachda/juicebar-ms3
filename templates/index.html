@@ -1,93 +1,59 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <div class="container-fluid container-title">
+    <header class="page-title">
 
-        <!--Flash Messages-->
-        <div class="row">
-            <div class="col-12">
-                {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        <ul>
-                            {% for message in messages %}
-                                <li class="success">{{ message }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                {% endwith %}
-            </div>
-        </div>
-
-        <!--Title-->
-
-        <div class="row">
-            <div class="col md-4">
-                <h3 class="title">JuiceBAR</h3>
-            </div>
-        </div>
-    </div>
-
-    <hr>
-
-    <!--Carousel-->
-
-    <div class="container-fluid container-carousel">
-        <div id="recipeCarousel" class="carousel slide" data-ride="carousel" data-interval="9000">
-            <div class="carousel-inner w-100" role="listbox">
-                <div class="carousel-item row no-gutters active">
-                    <div class="col-4 float-left car"><img class="img-fluid"
-                                                           src="{{ url_for('static', filename='img/car3.jpg') }}"></div>
-                    <div class="col-4 float-left car"><img class="img-fluid"
-                                                           src="{{ url_for('static', filename='img/car6.jpg') }}"></div>
-                    <div class="col-4 float-left car"><img class="img-fluid"
-                                                           src="{{ url_for('static', filename='img/car4.jpg') }}"></div>
-
-                </div>
-                <div class="carousel-item row no-gutters">
-                    <div class="col-4 float-left car"><img class="img-fluid"
-                                                           src="{{ url_for('static', filename='img/car5.jpg') }}"></div>
-                    <div class="col-4 float-left car"><img class="img-fluid"
-                                                           src="{{ url_for('static', filename='img/car2.jpg') }}"></div>
-                    <div class="col-4 float-left car"><img class="img-fluid"
-                                                           src="{{ url_for('static', filename='img/car1.jpg') }}"></div>
-
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12 text-center">
+                    <h1 class="main-title">JuiceBAR</h1>
+                    <a href="{{ url_for('get_recipes') }}" class="btn btn-outline-dark mt-4 uppercase">Browse All
+                        Recipes</a>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#recipeCarousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
         </div>
-    </div>
+    </header>
 
-    <hr>
-
+    <!-- Page Content -->
     <!--Paragraph with link or browse - depending if user logged in or not-->
+    <hr>
+    <!--Flash Messages-->
+    <div class="row">
+        <div class="col-12">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li class="success">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
 
     {% if session.username %}
-        <div class="container-fluid container-title">
+        <div class="container justify-content-center">
             <div class="row">
-                <div class="col logged-display">
-                    <a href="{{ url_for('get_recipes') }}" class="btn btn-outline-light mt-4">All Recipes</a>
-                    <a href="{{ url_for('get_juices') }}" class="btn btn-outline-light mt-4">Juices</a>
-                    <a href="{{ url_for('get_smoothies') }}" class="btn btn-outline-light mt-4">Smoothies</a>
+                <div class="col-12 center-text">
+                    <a href="{{ url_for('get_juices') }}" class="btn btn-outline-dark btn-custom mr-3">Juices</a>
+                    <a href="{{ url_for('get_smoothies') }}" class="btn btn-outline-dark btn-custom">Smoothies</a>
                 </div>
             </div>
         </div>
     {% else %}
-        <div class="container-fluid container-title">
+        <div class="container">
             <div class="row">
                 <div class="col">
                     <p class="main-p">Great way to explore, add and save recipes you love.
-                        Register <a class="a-here" href="{{ url_for('register') }}">here</a> to create your own juicing
+                        Register <a class="a-here" href="{{ url_for('register') }}">here</a> to create your own
+                        juicing
                         book! </p>
                 </div>
             </div>
         </div>
     {% endif %}
+    <hr>
+
 
 {% endblock %}
