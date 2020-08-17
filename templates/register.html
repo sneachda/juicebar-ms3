@@ -3,16 +3,30 @@
 
     <!--Registration container-->
 
-    <section id="registration-form">
+    <!--Error messages-->
+        <div class="row">
+            <div class="col-12">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p class="error-message">
+                                {{ message }}
+                            </p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
 
+    <section id="registration-form">
         <div class="container-fluid container-form">
             <div class="row justify-content-sm-center">
-                <div class="col-sm-12 col-md-3">
+                <div class="col-sm-12 col-md-6 col-lg-3">
                     <img class="register-image image-fluid"
                          src="{{ url_for('static', filename='img/login-register.jpg') }}"
                          alt="registration">
                 </div>
-                <div class="col-sm-12 col-md-3">
+                <div class="col-sm-12 col-md-6 col-lg-3">
                     <h2 class="reg-title">Register</h2>
                     <hr>
                     <form action="" method="POST">
@@ -32,20 +46,6 @@
                             {% endfor %}
                         </div>
 
-                        <!--Error messages-->
-                        <div class="row">
-                            <div class="col-12">
-                                {% with messages = get_flashed_messages() %}
-                                    {% if messages %}
-                                        {% for message in messages %}
-                                            <p class="error-message">
-                                                {{ message }}
-                                            </p>
-                                        {% endfor %}
-                                    {% endif %}
-                                {% endwith %}
-                            </div>
-                        </div>
 
                         <div class="form-group reg-log-btn">
                             {{ form.submit(class="btn btn-outline-info") }}
@@ -66,8 +66,6 @@
         </div>
 
     </section>
-
-
 
 {% endblock %}
 

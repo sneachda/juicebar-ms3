@@ -7,19 +7,21 @@
         <div class="container-fluid container-add">
             <form action="{{ url_for('insert_recipe') }}" method="POST">
                 {{ form.hidden_tag() }}
+
                 <div class="row">
                     <div class="col text-center">
                         <h2 class="recipe-title">New Recipe</h2>
                     </div>
                 </div>
+
                 <div class="form-row mt-4">
-                    <div class="col-sm-8 mt-4">
+                    <div class="col-sm-8">
                         <label class="required recipe-p uppercase" for="recipe_name"> Recipe Name
                              <i class="fas fa-signature p-2"></i>
                         </label>
                         {{ form.recipe_name(placeholder="Recipe Name", id="recipe_name", class="validate form-control", type="text") }}
                     </div>
-                    <div class="col-sm-4 mt-4">
+                    <div class="col-sm-4">
                         <label class="required recipe-p uppercase" for="recipe_category"> Category
                             <i class="fas fa-file-signature p-2"></i>
                         </label>
@@ -79,21 +81,20 @@
                 </div>
 
                 <!--Error messages-->
-                <div class="row">
-                    <div class="col-12">
-                        {% with messages = get_flashed_messages() %}
-                            {% if messages %}
-                                {% for message in messages %}
-                                    <p class="error-message">
-                                        {{ message }}
-                                    </p>
-                                {% endfor %}
-                            {% endif %}
-                        {% endwith %}
-                    </div>
-                </div>
 
-                <hr>
+                <div class="row">
+        <div class="col-12">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li class="success">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
 
                 <div class="row mt-4 justify-content-center">
                     <div class="form-group">
