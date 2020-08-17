@@ -395,7 +395,8 @@ hr {
         font-size: 20px;
     }
 
-    .container-add {
+    .container-add::after {
         background-image: none;
     }
 }
+
