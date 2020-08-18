@@ -27,6 +27,10 @@
                 </div>
             </div>
         {% endif %}
+    </header>
+
+    <!-- Page Content -->
+    <!--Paragraph with link or browse - depending if user logged in or not-->
 
     <!--Flash Messages-->
     <div class="row">
@@ -42,11 +46,6 @@
             {% endwith %}
         </div>
     </div>
-    </header>
-
-    <!-- Page Content -->
-    <!--Paragraph with link or browse - depending if user logged in or not-->
-
 
 
     {% if session.username %}
