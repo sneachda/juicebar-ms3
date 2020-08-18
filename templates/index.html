@@ -7,8 +7,11 @@
             <div class="row h-100 align-items-center">
                 <div class="col-12 text-center">
                     <h1 class="main-title">JuiceBAR</h1>
+                    <a href="{{ url_for('get_juices') }}" class="btn btn-outline-dark mt-4 uppercase">Juices</a>
                     <a href="{{ url_for('get_recipes') }}" class="btn btn-outline-dark mt-4 uppercase">Browse All
                         Recipes</a>
+                    <a href="{{ url_for('get_smoothies') }}" class="btn btn-outline-dark mt-4 uppercase">Smoothies</a>
+
                 </div>
             </div>
         </div>
@@ -16,7 +19,7 @@
 
     <!-- Page Content -->
     <!--Paragraph with link or browse - depending if user logged in or not-->
-    <hr>
+
     <!--Flash Messages-->
     <div class="row">
         <div class="col-12">
@@ -33,18 +36,12 @@
     </div>
 
     {% if session.username %}
-        <div class="container justify-content-center">
-            <div class="row">
-                <div class="col-12 center-text">
-                    <a href="{{ url_for('get_juices') }}" class="btn btn-outline-dark btn-custom">Juices</a>
-                    <a href="{{ url_for('get_smoothies') }}" class="btn btn-outline-dark btn-custom">Smoothies</a>
-                </div>
-            </div>
-        </div>
+
     {% else %}
+        <hr>
         <div class="container">
-            <div class="row">
-                <div class="col">
+            <div class="row justify-content-center">
+                <div class="col-12">
                     <p class="main-p">Great way to explore, add and save recipes you love.
                         Register <a class="a-here" href="{{ url_for('register') }}">here</a> to create your own
                         juicing
@@ -52,8 +49,9 @@
                 </div>
             </div>
         </div>
+        <hr>
     {% endif %}
-    <hr>
+
 
 
 {% endblock %}
