@@ -32,7 +32,7 @@
 
         <div class="row justify-content-center">
             {% for recipe in recipes %}
-                <div class="col-md-3 card text-center card-recipe img-hover">
+                <div class="col-md-6 col-lg-3 card text-center card-recipe img-hover">
                     {% if recipe.recipe_image %}
                         <figure><img class="card-img-top image-fluid" src="{{ recipe.recipe_image }}"
                                      alt="Card image cap"></figure>

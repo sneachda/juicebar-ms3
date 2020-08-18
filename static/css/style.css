@@ -126,7 +126,6 @@ hr {
     padding: 2px;
     text-decoration: none;
     border-radius: 3px;
-    position: center;
 }
 
 .a-here:hover {
@@ -317,11 +316,20 @@ li {
 
 @media (max-width: 768px) {
     .main-title {
-        font-size: 38px;
+        font-size: 34px;
     }
 
     .main-p {
-        font-size: 20px;
+        font-size: 16px;
+    }
+
+    .container-form, .container-recipe, .container-recipe-details,
+    .container-add-edit-rec {
+        margin-left: 0;
+    }
+
+    .page-title {
+        margin-top: 20px;
     }
 
 }

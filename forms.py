@@ -26,7 +26,7 @@ class RecipeForm(FlaskForm):
                                  validators=[DataRequired()])
     recipe_description = TextAreaField('Recipe Description',
                                        validators=[DataRequired()])
-    prep_time = IntegerField('Cooking Time (minutes)',
+    prep_time = IntegerField('Preparation Time (minutes)',
                              validators=[DataRequired()])
     it_serves = IntegerField('Number of Servings',
                              validators=[DataRequired()])

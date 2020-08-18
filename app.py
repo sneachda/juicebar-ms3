@@ -151,19 +151,19 @@ def insert_recipe():
     return redirect(url_for('my_recipes'))
 
 
-# UPDATE
-# provides user with a form to edit recipe with pre-populated fields.
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
-    user_logged_in = mongo.db.users.find_one({'username': session['username']})
-    full_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    form = RecipeForm()
-    if full_recipe['author'] == user_logged_in:
-        return render_template('edit_recipe.html', title='Edit Recipe', full_recipe=full_recipe, form=form, categories=mongo.db.categories.find())
-    else:
-        flash("You can only edit your own recipes!")
-        # Render the page for user to be able to log in
-        return render_template("index.html")
+    if 'username' in session:
+        full_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+        author = full_recipe["author"]
+        print(author)
+        print(full_recipe)
+        if session['username'] == author:
+            return render_template('edit_recipe.html', title='Edit Recipe', full_recipe=full_recipe, categories=mongo.db.categories.find())
+        else:
+            flash("You can only edit your own recipes!")
+            # Render the page for user to be able to log in
+            return render_template('index.html')
 
 
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
