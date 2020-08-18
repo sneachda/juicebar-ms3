@@ -282,7 +282,7 @@ li {
 .container-footer {
     text-align: center;
     margin-bottom: 15px;
-
+    margin-left: 50px;
 }
 
 .social-links-footer li a i {
@@ -323,7 +323,7 @@ li {
         font-size: 14px;
     }
       .container-form, .container-recipe, .container-recipe-details,
-    .container-add-edit-rec {
+    .container-add-edit-rec, .container-footer {
         margin-left: 0;
     }
 
@@ -342,7 +342,7 @@ li {
     }
 
     .container-form, .container-recipe, .container-recipe-details,
-    .container-add-edit-rec {
+    .container-add-edit-rec, .container-footer {
         margin-left: 0;
     }
 
