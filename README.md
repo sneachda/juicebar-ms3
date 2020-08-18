@@ -212,7 +212,9 @@ While viewing the recipe's full page, author of the recipe has an option to edit
 
 I deleted some dummy testing recipes to test the functionality. I received confirmation message saying deletion was successful. 
 
-Each time I performed above tasks I have checked Mongo DB to ensure actions were reflected there.  
+Each time I performed above tasks I have checked Mongo DB to ensure actions were reflected there. 
+
+I have noticed if user adds new recipe and put incorrect URL for image, image space will be blank.  
 
 *Footer*
 
