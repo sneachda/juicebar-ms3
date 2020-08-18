@@ -314,7 +314,25 @@ li {
 
 /*----------------------------------------------------Media Queries */
 
-@media (max-width: 767px) {
+@media (max-width: 280px) {
+    .main-title {
+        font-size: 28px;
+    }
+
+    .main-p {
+        font-size: 14px;
+    }
+      .container-form, .container-recipe, .container-recipe-details,
+    .container-add-edit-rec {
+        margin-left: 0;
+    }
+
+    .page-title {
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 281px) and (max-width: 767px) {
     .main-title {
         font-size: 36px;
     }

@@ -2,23 +2,31 @@
 {% block content %}
 
     <header class="page-title">
-
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12 text-center">
-                    <h1 class="main-title">JuiceBAR</h1>
-                    <a href="{{ url_for('get_juices') }}" class="btn btn-outline-dark mt-4 uppercase">Juices</a>
-                    <a href="{{ url_for('get_recipes') }}" class="btn btn-outline-dark mt-4 uppercase">All
-                        Recipes</a>
-                    <a href="{{ url_for('get_smoothies') }}" class="btn btn-outline-dark mt-4 uppercase">Smoothies</a>
-
+        {% if session.username %}
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-sm-12 text-center">
+                        <h1 class="main-title">JuiceBAR</h1>
+                        <a href="{{ url_for('my_recipes') }}" class="btn btn-outline-dark uppercase mt-4">my account</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </header>
 
-    <!-- Page Content -->
-    <!--Paragraph with link or browse - depending if user logged in or not-->
+        {% else %}
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-sm-12 text-center">
+                        <h1 class="main-title">JuiceBAR</h1>
+                        <a href="{{ url_for('get_juices') }}" class="btn btn-outline-dark mt-4 uppercase">Juices</a>
+                        <a href="{{ url_for('get_recipes') }}" class="btn btn-outline-dark mt-4 uppercase">All
+                            Recipes</a>
+                        <a href="{{ url_for('get_smoothies') }}"
+                           class="btn btn-outline-dark mt-4 uppercase">Smoothies</a>
+
+                    </div>
+                </div>
+            </div>
+        {% endif %}
 
     <!--Flash Messages-->
     <div class="row">
@@ -34,6 +42,12 @@
             {% endwith %}
         </div>
     </div>
+    </header>
+
+    <!-- Page Content -->
+    <!--Paragraph with link or browse - depending if user logged in or not-->
+
+
 
     {% if session.username %}
 

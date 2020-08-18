@@ -182,7 +182,7 @@ The code has been validated using:
   
   
  - app.py was tested through  [PEP8 Online](http://pep8online.com/) 
-   validator.
+   validator. There was just complain about few lines being too long.
 
   
   
