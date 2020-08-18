@@ -120,6 +120,8 @@ The delete recipe function allows only author of the recipe to delete it
  *My favourites*    
  User would have an opportunity to "like" other recipes, saving them in "my favourites" collection, which would be displayed on a separate page. Each recipe card will include a small "heart" icon, clicking which will enable user to add the selected recipe to "my favourites".    
 
+Also it has been pointed out I have few lines of code repetition happening in my app.py which I will look to clean up - with more time to learn and think about it.
+
 &nbsp;
 ***
 &nbsp;    

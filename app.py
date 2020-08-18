@@ -156,8 +156,6 @@ def edit_recipe(recipe_id):
     if 'username' in session:
         full_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
         author = full_recipe["author"]
-        print(author)
-        print(full_recipe)
         if session['username'] == author:
             return render_template('edit_recipe.html', title='Edit Recipe', full_recipe=full_recipe, categories=mongo.db.categories.find())
         else:
