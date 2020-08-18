@@ -315,7 +315,7 @@ li {
 /*----------------------------------------------------Media Queries */
 
 @media (max-width: 768px) {
-    .title {
+    .main-title {
         font-size: 38px;
     }
 
