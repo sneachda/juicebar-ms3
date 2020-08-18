@@ -7,7 +7,6 @@
 
         <div class="container container-add-edit-rec">
             <form action="{{ url_for('update_recipe', recipe_id=full_recipe._id) }}" method="POST">
-                {{ form.hidden_tag() }}
                 <div class="row">
                     <div class="col text-center">
                         <h2 class="recipe-title p-4">Edit Recipe</h2>

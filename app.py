@@ -157,12 +157,15 @@ def insert_recipe():
 def edit_recipe(recipe_id):
     if 'username' in session:
         full_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-        form = RecipeForm()
-        return render_template('edit_recipe.html', title='Edit Recipe', full_recipe=full_recipe, form=form,
-                               categories=mongo.db.categories.find())
+        author = full_recipe["author"]
+        print(author)
+        print(full_recipe)
+        if session['username'] == author or session['username']:
+            return render_template('edit_recipe.html', title='Edit Recipe', full_recipe=full_recipe, categories=mongo.db.categories.find())
     else:
-        # Render the page for user to be able to log in
-        return render_template("login.html")
+        flash("You can only edit your own recipes!")
+        # redirects user to home page and states the mistake by flash message
+        return render_template('index.html')
 
 
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
