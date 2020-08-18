@@ -174,12 +174,12 @@ The delete recipe function allows only author of the recipe to delete it
 The code has been validated using:  
   
   
- - [W3C Mark-up Validation Service](_https://validator.w3.org/_)  
+ - [W3C Mark-up Validation Service](https://validator.w3.org/)  
   
- - [W3C CSS Validation Service](_https://jigsaw.w3.org/css-validator/_)  
+ - [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)  
   
   
- - app.py was tested through  [PEP8 Online](_http://pep8online.com/_) 
+ - app.py was tested through  [PEP8 Online](http://pep8online.com/) 
    validator.
 
   
@@ -301,20 +301,19 @@ python3 app.py
 
 **Content**
 
- - All recipes and recipes' images are taken from [BBC Good
-   Food](_https://www.bbcgoodfood.com/_) except the ones added by other
-   users.
-   
-  - To achieve hover effect on some of my images I have looked into
-   [https://thebrandsmen.com/css-image-hover-effects/](https://thebrandsmen.com/css-image-hover-effects/)
-   
-   - I have used several flask tutorials and edited the code to my needs.
-   Biggest help was [Corey Schafer](_https://www.youtube.com/watch?v=MwZwr5Tvyxo&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH_) with his youtube tutorials that helped me with set up and WTF forms mainly. I have also learned about pagination from him.
-
-   - The Flask Mega-Tutorial  -  [Miguel Grinberg](_https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world_) was recommended to me by my mentor.
-
-   - Projects of other student have been very useful during this process. I have adopted pagination from Shane Muirhead's project and I was also guided by student with GitHub username: [irinatu17](https://github.com/irinatu17)
-	
+- All recipes and recipes' images are taken from [BBC Good  
+ Food](https://www.bbcgoodfood.com/) except the ones added by other  
+  users.  
+    
+ - To achieve hover effect on some of my images I have looked into  
+  [https://thebrandsmen.com/css-image-hover-effects/](https://thebrandsmen.com/css-image-hover-effects/)  
+    
+  - I have used several flask tutorials and edited the code to my needs.  
+  Biggest help was [Corey Schafer](https://www.youtube.com/watch?v=MwZwr5Tvyxo&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH) with his youtube tutorials that helped me with set up and WTF forms mainly. I have also learned about pagination from him.  
+  
+  - The Flask Mega-Tutorial  -  [Miguel Grinberg](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) was recommended to me by my mentor.  
+  
+  - Projects of other student have been very useful during this process. I have adopted pagination from Shane Muirhead's project and I was also guided by student with GitHub username: [irinatu17](https://github.com/irinatu17)
 
 &nbsp;
 ***
