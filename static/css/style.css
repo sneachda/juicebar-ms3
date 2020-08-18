@@ -314,9 +314,9 @@ li {
 
 /*----------------------------------------------------Media Queries */
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .main-title {
-        font-size: 34px;
+        font-size: 36px;
     }
 
     .main-p {
@@ -331,5 +331,18 @@ li {
     .page-title {
         margin-top: 20px;
     }
+}
+
+@media (min-width: 768px) and (max-width: 992px){
+    .container-add-edit-rec {
+        margin-left: 25px;
+    }
 
 }
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .container-add-edit-rec {
+        margin-left: 30px;
+    }
+}
+
