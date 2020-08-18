@@ -6,7 +6,7 @@
      
 [JuiceBar Github repository](https://github.com/sneachda/juicebar-ms3)     
     
-[Wireframes]()    
+[Wireframes](https://github.com/sneachda/juicebar-ms3/tree/master/wireframes)    
    
    &nbsp; 
     
