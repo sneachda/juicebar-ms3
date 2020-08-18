@@ -20,7 +20,8 @@ It's a great way to create and store some of your favourite recipes.
 Give it a go [here](https://juicebar-cookbook.herokuapp.com/)      
       
  &nbsp;  
- ***  &nbsp;     
+ ***  
+ &nbsp;     
       
 >##  UX &nbsp;  
   
