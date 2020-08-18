@@ -1,11 +1,14 @@
 # **JuiceBar** ***Practical Python and Data-Centric Development - Code Institute - Third Milestone Project***      
+  
+  &nbsp;
       
  [LiveWebsite: JuiceBar](https://juicebar-cookbook.herokuapp.com/)    
      
 [JuiceBar Github repository](https://github.com/sneachda/juicebar-ms3)     
     
 [Wireframes]()    
-    
+   
+   &nbsp; 
     
       
 The main purpose of this project is to build a responsive website that allows user to create, read, update and delete (*CRUD*) recipes. **JuiceBar** is a MongoDB based Flask project      
@@ -16,12 +19,17 @@ It's a great way to create and store some of your favourite recipes.
       
 Give it a go [here](https://juicebar-cookbook.herokuapp.com/)    
     
-    
+ &nbsp;
+ ***
+ &nbsp;   
     
 >##  UX    
-    
+&nbsp;
+
  ***User Stories***    
- ****As a user, I want/expect:****    
+ 
+ ****As a user, I want/expect:****   
+  
  - to view all the recipes without having to register    
     
 - to create my own account    
@@ -43,10 +51,16 @@ Main goal, following the industry standards, was to make website easily accessib
 Decision was made to use [Bootstrap](https://getbootstrap.com) to create simple, responsive project. Features like navbar forms, card as well as responsive display were built using it.     
     
 *Color Scheme* One of the main goals was to focus user's attention on the recipe cards and recipes' images. Therefore, I decided to have clean white pages with popping color from images which comes with recipes.     
+ 
+ &nbsp;
+ ***
+ &nbsp;   
     
-    
->## Features    
- *Navbar*    
+>## Features  
+&nbsp;
+  
+ *Navbar*  
+   
  The navbar is fixed on top of the page. Logo is located on the left hand side, which redirects user to home page when clicked.  On the smaller devices the navbar is collapsed into a burger icon.      
 For **non-logged in** users or **guests** navbar contains the following links: Browse, Register and Login.     
 For **logged-in** users navbar contains the following links: Browse and My Account which opens up allowing user to view their Recipes, Add Recipes and Log out.     
@@ -68,34 +82,47 @@ If the entered username and hashed password match the ones in the database, a us
 *Logout*    
  Hitting "logout" button by the logged in users ends their session and redirects to the homepage.    
     
+&nbsp;
+***
     
 *My Recipes - **CRUD***    
 
  **Logged In** username has access to CRUD method, which allows them to read all recipes in DB, create recipes and update/delete recipes they have created.     
     
 *Read* 
+
 To view all recipes created by username logged in, they need to click on 'My Recipes'. If they have not created any recipes, the page will display paragraph inviting them to add new recipe.    
     
 *Create* 
+
 The registered and logged in users can add new recipes through the form. There are some validations in place - all the fields except "Recipe Image" are required.  If user does not provide a URL to the recipe image, the recipe placeholder will be assigned for that recipe.     
 After the successful addition, a user is redirected to 'My Recipes'. There is also a button "Cancel" that simply redirects a user to 'My Recipes' page.    
     
 *Edit* 
+
 The edit recipe page allows the logged in user to update information about the recipe. The "Edit" button will appear only for the author of the recipe.    
     
 *Delete* 
+
 The delete recipe function allows only author of the recipe to delete it    
-    
+ 
+ &nbsp;   
     
 *Footer*    
  The footer features links to the social media which open in a new tab (by using  `'target="_blank"`).    
     
     
+&nbsp;
+***
+
 **Features to implement**    
     
  *My favourites*    
  User would have an opportunity to "like" other recipes, saving them in "my favourites" collection, which would be displayed on a separate page. Each recipe card will include a small "heart" icon, clicking which will enable user to add the selected recipe to "my favourites".    
-    
+
+&nbsp;
+***
+&nbsp;    
     
 >##  Technology Used    
     
@@ -136,9 +163,13 @@ The delete recipe function allows only author of the recipe to delete it
  - [FontAwesome](https://fontawesome.com/)  - to provide icons used across the project.    
     
  - [JQuery](_https://jquery.com/)  - to simplify DOM manipulation    
-  
+ 
+ &nbsp;
+ ***
+ &nbsp; 
     
->## Testing   
+>## Testing  
+&nbsp; 
   
 The code has been validated using:  
   
@@ -155,21 +186,25 @@ The code has been validated using:
   
 *Manual testing was carried out on mobile devices and desktop.*  
   
-*Index/Browse Recipes/Single Recipe Page*  
+*Index/Browse Recipes/Single Recipe Page*
+  
 Pages are working as expected, all links directing to correct categories.   
 I have browsed as a visitor and as a logged in user. Both times features I have intended to have appeared accordingly.   
 When browsing through recipes, 3 of them will appear per page with limited information about them. User has an option to view full recipe and this function worked well.  
 While browsing as a guest don't give you a lot of options, as a username clicking on own recipes, option for edit and delete will appear.   
   
 *Register/Login*  
+
 Few dummies accounts have been created through out the process to test functionality. Clicking on register will take you to the simple form where username and password can be inputed. There is a character limit 3-30, if not achieved error message will pop up. I have tried all scenarios and it worked as expected. When both fields are correct and submit button clicked, user will be redirected to index page - where a paragraph inviting him to register changed to my account button. Flash message will also indicate successful creation of account.  
   
 Returning user can easily access Login page through navbar. Attempts where made to throw an error message - empty fields, username and password not corresponding, wrong username - which all came back with flash error notification. If login is successful - user again will be redirected to index page with flash message indicating sucesfull login.   
 
 *My Recipes*
+
 It allows user to view their own recipes in one place.  Pagination and change in navbar after login worked each time. 
   
 *Add/Edit/Delete Recipes*  
+
 Logged in user has an option to add and edit their own recipes. They cannot amend any other recipe in database (no option available for them to do so).   
 Throughout the testing I have added bunch of recipes. Form has a required fields - if left empty - user is notified. Once the recipe is created and add button is clicked, user is redirected to 'My Account'.   
   
@@ -180,8 +215,10 @@ I deleted some dummy testing recipes to test the functionality. I received confi
 Each time I performed above tasks I have checked Mongo DB to ensure actions were reflected there.  
 
 *Footer*
+
 Links have been tested to check if they redirecting to correct source.
 
+&nbsp;
 ***
 *General issues*
 
@@ -198,9 +235,13 @@ This website had been being tested during the development across  **multiple bro
 I also used  **Google Chrome's developer tools**  to see how it looks across all the different device screen sizes to ensure compatibility and responsiveness.  
 Necessary media queries were added to make the website fully responsive.  
 The one issue was found that website renders poorly on Internet Explorer browser.
+
+&nbsp;
+***
+&nbsp;
   
 >## Deployment 
-
+&nbsp;
 
 This project was developed using PyCharm as the chosen IDE and GitHub as a remote repository.
 
@@ -218,7 +259,10 @@ PORT: 5000
 ```
  3.  I have deployed project to Heroku by connecting with GitHub. I found it easier pushing changes to one remote repository.  And I allowed for automatic deploys which means my project was updating 'in real time'
 
+&nbsp;
 ***
+&nbsp;
+
 To create a ***local repository*** please follow those steps:
 
  
@@ -248,7 +292,12 @@ python3 app.py
 ```
 12.  Paste  `[http://127.0.0.1:5000/](http://127.0.0.1:5000/)` into your browser URL to access.
 
+
+&nbsp;
+***
+&nbsp;
 >## Credits 
+&nbsp;
 
 **Content**
 
@@ -265,12 +314,21 @@ python3 app.py
 	- The Flask Mega-Tutorial  -  [Miguel Grinberg](_https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world_) was recommended to me by my mentor.
 
 	- Projects of other student have been very useful during this process. I have adopted pagination from Shane Muirhead's project and I was also guided by student with GitHub username: [irinatu17](https://github.com/irinatu17)
+	
 
-
+&nbsp;
+***
+&nbsp;
 
 >## Acknowledgements 
+&nbsp;
+
 
 I have had a big support network during the development process and I would like to thank all who have been involved: Code Institute tutors, students, friends and my mentor: Maranatha Ilesanmi. 
 
->## Disclaimer    
+
+&nbsp;
+>## Disclaimer  
+
+
  _The content of this website is for educational purposes only._
