@@ -352,6 +352,7 @@ li {
 }
 
 @media (min-width: 768px) and (max-width: 992px){
+    .container-form, .container-recipe, .container-recipe-details,
     .container-add-edit-rec, .container-footer {
         margin-left: 25px;
     }
@@ -359,6 +360,7 @@ li {
 }
 
 @media (min-width: 1024px) and (max-width: 1199px) {
+    .container-form, .container-recipe, .container-recipe-details,
     .container-add-edit-rec, .container-footer {
         margin-left: 30px;
     }
