@@ -311,9 +311,9 @@ python3 app.py
    - I have used several flask tutorials and edited the code to my needs.
    Biggest help was [Corey Schafer](_https://www.youtube.com/watch?v=MwZwr5Tvyxo&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH_) with his youtube tutorials that helped me with set up and WTF forms mainly. I have also learned about pagination from him.
 
-	- The Flask Mega-Tutorial  -  [Miguel Grinberg](_https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world_) was recommended to me by my mentor.
+   - The Flask Mega-Tutorial  -  [Miguel Grinberg](_https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world_) was recommended to me by my mentor.
 
-	- Projects of other student have been very useful during this process. I have adopted pagination from Shane Muirhead's project and I was also guided by student with GitHub username: [irinatu17](https://github.com/irinatu17)
+   - Projects of other student have been very useful during this process. I have adopted pagination from Shane Muirhead's project and I was also guided by student with GitHub username: [irinatu17](https://github.com/irinatu17)
 	
 
 &nbsp;
